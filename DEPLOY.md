@@ -118,12 +118,27 @@ an external pinger: it answers from a dict cached at startup, touching neither
 the index nor any upstream API, and returns in **~1.9ms**. Pinging it costs
 nothing and never spends quota.
 
-Point any free uptime monitor (UptimeRobot, cron-job.org, Better Stack) at
-`https://<your-service>.onrender.com/health` every 10 minutes.
+[`.github/workflows/keep-warm.yml`](.github/workflows/keep-warm.yml) does this:
+it pings `/health` every 10 minutes on weekdays, 04:00–20:59 UTC — roughly
+06:00–23:00 CEST — and fails the run if the service answers `200` with
+`status: "degraded"`, which is what a deploy missing `data/index/` looks like.
+There is a **Run workflow** button on the Actions tab to warm it on demand, the
+evening before an interview.
 
-Render's free plan also caps total monthly instance hours, so a permanent pinger
-trades cold starts for hours of that budget. Pinging only around the days you
-expect traffic is the better deal.
+Two things to know about it:
+
+- **Render's free plan caps monthly instance hours at 750.** The weekday window
+  costs ~370 of them, leaving room for redeploys. Pinging 24/7 would cost ~730
+  and leave almost none, so the service is deliberately allowed to sleep
+  overnight and at weekends; the first visitor then waits ~30–60s for a boot.
+- **GitHub disables scheduled workflows after 60 days without a commit** to the
+  repository. If the demo goes quiet for two months the pinger stops silently.
+  The Actions tab shows this, and any commit re-enables it.
+
+If you would rather not run it from Actions, any free uptime monitor
+(UptimeRobot, cron-job.org, Better Stack) pointed at
+`https://<your-service>.onrender.com/health` every 10 minutes does the same job,
+and adds downtime alerting for free.
 
 ---
 

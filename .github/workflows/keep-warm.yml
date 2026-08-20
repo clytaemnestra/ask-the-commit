@@ -1,0 +1,68 @@
+# Keeps the Render free-tier demo from going cold.
+#
+# Render spins a free web service down after ~15 minutes without traffic, and the
+# first request after that waits ~30-60s while the app boots and loads the ONNX
+# model. `/health` exists to be pinged: it answers from a dict cached at startup,
+# touching neither the index nor Groq, so this costs nothing but instance-hours.
+#
+# Budget: the window below is ~17h x 5 days x 4.3 weeks = ~365 of Render's 750
+# free instance-hours per month, leaving room for redeploys. Outside it, the
+# service is deliberately allowed to sleep.
+name: Keep warm
+
+on:
+  # GitHub cron is UTC and has no timezone support, so the window is set wide
+  # enough to span the DST shift: 04:00-20:59 UTC is 06:00-22:59 CEST in summer
+  # and 05:00-21:59 CET in winter.
+  #
+  # Every 10 minutes against Render's ~15-minute idle timeout leaves 5 minutes of
+  # slack for GitHub's scheduler, which is best-effort and runs late under load.
+  # If you find the service going cold anyway, tighten this to '*/5'.
+  schedule:
+    - cron: '*/10 4-20 * * 1-5'
+
+  # Warm it on demand — the evening before an interview, say.
+  workflow_dispatch:
+
+# Nothing is read from or written to the repo.
+permissions: {}
+
+# A delayed run must not pile up behind the next scheduled one.
+concurrency:
+  group: keep-warm
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Ping /health
+        env:
+          # The only line to change if the service is ever renamed.
+          HEALTH_URL: https://ask-the-commit.onrender.com/health
+        run: |
+          set -euo pipefail
+
+          # --max-time 90 because a cold start has to boot the app and load the
+          # embedding model before it can answer anything.
+          # --retry-all-errors so a single blip from Render's router does not
+          # turn into a failure email.
+          body=$(curl -fsS --max-time 90 --retry 3 --retry-delay 20 \
+                      --retry-all-errors "$HEALTH_URL")
+          echo "$body" | jq .
+
+          # A 200 is not sufficient. The service answers 200 with
+          # status="degraded" when the index is missing or empty, which is
+          # exactly the failure a bad deploy introduces silently.
+          # Not named `status`: that is a read-only variable in zsh, so the
+          # snippet would not survive being pasted into a local shell.
+          health=$(echo "$body" | jq -r '.status')
+          if [ "$health" != "ok" ]; then
+            echo "::error::health reported status=$health (expected ok)"
+            exit 1
+          fi
+
+          echo "::notice::$(echo "$body" | jq -r \
+            '"ok — \(.indexed_episodes) episodes, \(.indexed_chunks) chunks, boot \(.boot_seconds)s"')"
