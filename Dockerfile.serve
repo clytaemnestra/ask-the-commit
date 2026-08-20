@@ -1,0 +1,37 @@
+# Query-only image, for hosts that run containers (Cloud Run, Fly, a VPS).
+# Render does not need this — see DEPLOY.md for the simpler Python runtime path.
+#
+# Ships no ML stack at all: the index is a committed NumPy array and the question
+# is embedded through an HTTP API, so there is nothing to install beyond the
+# runtime requirements.
+#
+#   docker build -f Dockerfile.serve -t podcast-rag-serve .
+#   docker run -p 7860:7860 --env-file .env podcast-rag-serve
+FROM python:3.11-slim
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PORT=7860
+
+RUN useradd --create-home --uid 1000 app
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY app ./app
+COPY rag.py main.py ./
+# The prebuilt index. Build fails loudly here if you forgot to commit it.
+COPY data/index ./data/index
+
+RUN chown -R app:app /app
+USER app
+EXPOSE 7860
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+    CMD python -c "import os,urllib.request,sys; sys.exit(0 if urllib.request.urlopen(f\"http://localhost:{os.environ.get('PORT','7860')}/health\", timeout=4).status == 200 else 1)"
+
+# Exec form through sh so $PORT still expands — hosts set it to whatever they
+# route to — without losing signal handling.
+CMD ["sh", "-c", "exec uvicorn main:app --host 0.0.0.0 --port ${PORT:-7860}"]

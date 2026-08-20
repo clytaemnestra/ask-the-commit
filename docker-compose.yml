@@ -1,0 +1,43 @@
+# Two services from one image:
+#   api    — the always-on FastAPI service (default)
+#   ingest — a one-shot transcribe/index job, run on demand
+#
+#   docker compose up --build                       # start the API
+#   docker compose run --rm ingest                  # index everything in episodes/
+#   docker compose run --rm ingest python eval.py   # run the eval set
+
+services:
+  api:
+    build: .
+    image: podcast-rag:latest
+    container_name: podcast-rag-api
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./episodes:/app/episodes:ro   # your audio, never written to
+      - ./data:/app/data              # transcript cache + generated index
+      - hf-cache:/models              # whisper + embedding weights, downloaded once
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=4)"]
+      interval: 30s
+      timeout: 5s
+      start_period: 90s
+      retries: 3
+
+  ingest:
+    build: .
+    image: podcast-rag:latest
+    profiles: ["ingest"]              # only runs when explicitly invoked
+    env_file:
+      - .env
+    volumes:
+      - ./episodes:/app/episodes:ro
+      - ./data:/app/data
+      - hf-cache:/models
+    command: ["python", "ingest.py"]
+
+volumes:
+  hf-cache:

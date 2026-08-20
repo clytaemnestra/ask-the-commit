@@ -1,0 +1,27 @@
+# INGEST-ONLY dependencies — used locally to turn audio into a committed index.
+# Never installed on the deployed service.
+#
+#   pip install -r requirements-ingest.txt
+#   python ingest.py          # audio -> transcript -> chunks -> data/index/
+#   git add data/index && git commit
+#
+# NOTE: sentence-transformers pulls torch. On a CPU-only machine install the
+# slim CPU wheel first to avoid ~2.5GB of unused CUDA libraries:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+-r requirements.txt
+
+# --- Transcription ---
+faster-whisper>=1.0,<2.0
+
+# --- Local embeddings (EMBEDDING_PROVIDER=local) ---
+# Optional: only needed to embed without an API. The hosted providers in
+# requirements.txt work for ingestion too, and keep query and document vectors
+# guaranteed identical.
+sentence-transformers>=3.0,<6.0
+
+# --- Chroma (VECTOR_STORE=chroma) ---
+# Optional: the NumPy store is the default and the only one used in deployment.
+# Kept for local experimentation and to show the VectorStore protocol has more
+# than one real implementation.
+chromadb>=0.5.5,<2.0

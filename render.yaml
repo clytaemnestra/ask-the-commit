@@ -1,0 +1,51 @@
+# Render blueprint: one free web service, no database, no disk.
+#
+# Deploy: Render dashboard -> New -> Blueprint -> pick this repo.
+# Render reads this file, creates the service, and prompts for the two secrets
+# marked `sync: false` below.
+#
+# The free plan has no persistent disk, so the service is strictly read-only at
+# runtime: the vector index is committed to the repo under data/index/ and
+# memory-mapped at startup. Rebuilding it means running ingest.py locally and
+# pushing the result.
+
+services:
+  - type: web
+    name: podcast-rag
+    runtime: python
+    plan: free
+    region: frankfurt          # pick the region nearest your interviewers
+    branch: main
+
+    buildCommand: pip install -r requirements.txt
+    # $PORT is injected by Render and must not be hardcoded.
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+
+    # Cheap, instant, and touches neither the index nor any upstream API.
+    healthCheckPath: /health
+
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+
+      # --- Secrets: set in the Render dashboard, never committed -------------
+      # The only secret this service needs. Embedding runs locally through the
+      # committed ONNX model, so there is no embedding provider to sign up for.
+      - key: GROQ_API_KEY
+        sync: false            # prompted on deploy; https://console.groq.com/keys
+
+      # --- Serving configuration -------------------------------------------
+      - key: EMBEDDING_PROVIDER
+        value: onnx            # must match the embedder that built data/index/
+      - key: VECTOR_STORE
+        value: numpy
+      - key: LLM_PROVIDER
+        value: groq
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-120b
+      - key: TOP_K
+        value: "5"
+      - key: MIN_SCORE
+        value: "0.20"
+      - key: LOG_FORMAT
+        value: json

@@ -1,0 +1,36 @@
+# Build context for Dockerfile.serve. BuildKit prefers <dockerfile>.dockerignore
+# over .dockerignore, which lets the serving image include data/chroma while the
+# ingest image (.dockerignore) keeps excluding all of data/.
+
+.git
+.gitignore
+.venv
+venv
+__pycache__
+*.pyc
+.pytest_cache
+.mypy_cache
+.ruff_cache
+
+# Secrets never enter an image; the host injects them as env vars.
+.env
+
+# Source audio is huge and only needed for ingestion.
+episodes/
+
+# Ingest-only and dev-only paths.
+tests/
+data/transcripts/
+data/transcripts-*/
+data/chroma/
+data/eval_results*.json
+ingest.py
+eval.py
+eval_set.json
+requirements-ingest.txt
+requirements-dev.txt
+Dockerfile
+docker-compose.yml
+*.md
+
+# data/index is deliberately NOT ignored: it is the index the service serves.

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Podcast RAG</title>
+<style>
+  :root {
+    --bg: #fbfbfa;  --panel: #ffffff;  --ink: #1a1a19;  --muted: #6b6b66;
+    --line: #e4e4e0; --accent: #2f6f4f; --accent-ink: #ffffff;
+    --warn-bg: #fdf6e8; --warn-line: #e8d5a8; --warn-ink: #6b5320;
+    --radius: 10px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #17181a; --panel: #1f2124; --ink: #e8e8e6; --muted: #9a9a95;
+      --line: #303338; --accent: #6bbf8f; --accent-ink: #10221a;
+      --warn-bg: #2a2418; --warn-line: #4a3f24; --warn-ink: #e0c98a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 2.5rem 1.25rem 4rem; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  main { max-width: 46rem; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin: 0 0 .3rem; letter-spacing: -.015em; }
+  .sub { color: var(--muted); margin: 0 0 1.75rem; font-size: .95rem; }
+  .sub code { font-size: .85em; }
+
+  form { display: flex; gap: .5rem; margin-bottom: .85rem; }
+  input[type=text] {
+    flex: 1; padding: .7rem .85rem; font: inherit; color: var(--ink);
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  }
+  input[type=text]:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  button {
+    padding: .7rem 1.15rem; font: inherit; font-weight: 600; cursor: pointer;
+    background: var(--accent); color: var(--accent-ink);
+    border: 1px solid transparent; border-radius: var(--radius);
+  }
+  button:disabled { opacity: .55; cursor: progress; }
+
+  .examples { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 2rem; }
+  .chip {
+    font-size: .82rem; padding: .3rem .65rem; cursor: pointer; color: var(--muted);
+    background: var(--panel); border: 1px solid var(--line); border-radius: 999px;
+  }
+  .chip:hover { color: var(--ink); border-color: var(--accent); }
+
+  .card {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 1.15rem 1.25rem; margin-bottom: 1rem;
+  }
+  .answer { font-size: 1.03rem; white-space: pre-wrap; }
+  .card.refused { background: var(--warn-bg); border-color: var(--warn-line); color: var(--warn-ink); }
+
+  h2 { font-size: .78rem; text-transform: uppercase; letter-spacing: .07em;
+       color: var(--muted); margin: 1.75rem 0 .6rem; font-weight: 600; }
+  .src { border-top: 1px solid var(--line); padding: .8rem 0; }
+  .src:first-child { border-top: 0; padding-top: 0; }
+  .src-head { display: flex; flex-wrap: wrap; gap: .5rem; align-items: baseline; }
+  .ep { font-weight: 600; font-size: .93rem; }
+  .ts { font-variant-numeric: tabular-nums; color: var(--accent); font-size: .88rem; }
+  .score { margin-left: auto; color: var(--muted); font-size: .78rem; font-variant-numeric: tabular-nums; }
+  .quote { color: var(--muted); font-size: .89rem; margin-top: .4rem; }
+  .meta { color: var(--muted); font-size: .78rem; font-variant-numeric: tabular-nums; }
+  .err { color: #c0392b; }
+  @media (prefers-color-scheme: dark) { .err { color: #ff8a75; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Podcast RAG</h1>
+  <p class="sub" id="index-summary">Answers grounded only in the indexed transcripts, with episode and timestamp citations.</p>
+
+  <form id="ask-form">
+    <input type="text" id="question" placeholder="Ask a question about the episodes…"
+           autocomplete="off" required minlength="3" maxlength="1000">
+    <button type="submit" id="submit">Ask</button>
+  </form>
+
+  <div class="examples" id="examples"></div>
+
+  <div id="output"></div>
+</main>
+
+<script>
+const EXAMPLES = [
+  "Why does Kushal think privacy is a human right?",
+  "How do diffusion models actually produce audio?",
+  "What was PyPI formerly known as?",
+  "What is chat control?",
+  "What is the capital of Mongolia?",
+];
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => s.replace(/[&<>"']/g, (c) =>
+  ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+function renderExamples() {
+  $("examples").innerHTML = EXAMPLES
+    .map((q) => `<span class="chip" data-q="${esc(q)}">${esc(q)}</span>`).join("");
+  document.querySelectorAll(".chip").forEach((chip) =>
+    chip.addEventListener("click", () => {
+      $("question").value = chip.dataset.q;
+      $("ask-form").requestSubmit();
+    }));
+}
+
+async function loadHealth() {
+  try {
+    const r = await fetch("/health");
+    if (!r.ok) return;
+    const h = await r.json();
+    $("index-summary").innerHTML =
+      `Answers grounded only in the indexed transcripts, with episode and timestamp citations.<br>` +
+      `<span class="meta">${h.indexed_episodes} episodes · ${h.indexed_chunks} chunks · ` +
+      `${esc(h.embedding_model.split("/").pop())} · ${esc(h.llm)}</span>`;
+  } catch (_) { /* health is advisory only */ }
+}
+
+function renderSources(sources) {
+  if (!sources.length) return "";
+  const items = sources.map((s, i) => `
+    <div class="src">
+      <div class="src-head">
+        <span class="ts">[${i + 1}] ${esc(s.timestamp)}</span>
+        <span class="ep">${esc(s.episode)}</span>
+        <span class="score">${s.score.toFixed(3)}</span>
+      </div>
+      <div class="quote">${esc(s.text.slice(0, 320))}${s.text.length > 320 ? "…" : ""}</div>
+    </div>`).join("");
+  return `<h2>Sources</h2><div class="card">${items}</div>`;
+}
+
+async function ask(question) {
+  $("submit").disabled = true;
+  $("output").innerHTML = `<div class="card meta">Searching transcripts…</div>`;
+  try {
+    const res = await fetch("/ask", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ question }),
+    });
+    const body = await res.json();
+    if (!res.ok) {
+      $("output").innerHTML =
+        `<div class="card err">${esc(body.detail || `Request failed (${res.status})`)}</div>`;
+      return;
+    }
+    $("output").innerHTML =
+      `<div class="card answer${body.refused ? " refused" : ""}">${esc(body.answer)}</div>` +
+      renderSources(body.sources) +
+      `<p class="meta">${esc(body.model)} · retrieval ${body.retrieval_ms.toFixed(0)}ms · ` +
+      `generation ${body.generation_ms.toFixed(0)}ms · total ${body.latency_ms.toFixed(0)}ms</p>`;
+  } catch (err) {
+    $("output").innerHTML = `<div class="card err">Could not reach the service: ${esc(String(err))}</div>`;
+  } finally {
+    $("submit").disabled = false;
+  }
+}
+
+$("ask-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const q = $("question").value.trim();
+  if (q.length >= 3) ask(q);
+});
+
+renderExamples();
+loadHealth();
+</script>
+</body>
+</html>

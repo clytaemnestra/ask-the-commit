@@ -1,0 +1,9 @@
+{
+  "chunks": 96,
+  "dimension": 384,
+  "embedder": "onnx:all-MiniLM-L6-v2",
+  "embedding_provider": "onnx",
+  "chunk_tokens": 220,
+  "chunk_overlap_tokens": 40,
+  "transcriber": "faster-whisper:small"
+}

@@ -1,0 +1,866 @@
+[
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00000",
+  "text": "You know, like highly automated musical generative AI, which kind of defeats the purpose. So there's either the, what we would call, autoregressive neural codec models, or there's this idea of diffusion models, which is a generative model for lullabies, and the guy trained it on, like, short melodic lullabies for children, and the guy trained it on his, like, five or six-year-old daughter. Hi, we are in Warsaw at PyWav, at the Rancher Cafe, and I just called Mateusz. Mateusz is a professional musician, software engineer, researcher, and assistant professor at the Warsaw University of Technology. Hi, everybody. Mateusz, what are your thoughts about AI and music? Yeah, well, that's the big question, right? So I have some conflicting thoughts and views on the topic, so I've been a professional musician for a lot of years,",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 0.0,
+  "end": 60.38,
+  "index": 0,
+  "n_tokens": 202
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00001",
+  "text": "thoughts and views on the topic, so I've been a professional musician for a lot of years, so I know what's the feeling of being on stage and practicing on your instrument, and, like, putting your, you know, like, heart into music, into performance, etc. But then also, like, again, like, a part of my heart is at research, at machine learning, at programming, etc. So I think, in general, like, my whole view of this whole hot topic that is music AI is that I really like and I'm really interested in the parts that really empower, like, new interfaces for musical expression and really empower the artists. And I'm, like, not really so much, like, for the, you know, like, highly automated musical generative AI, which kind of defeats the purpose. And kind of, it's very hard for me to, like, find a space where that would be, like, really interesting, I think. So you said that AI has some good and bad",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 55.26,
+  "end": 129.1,
+  "index": 1,
+  "n_tokens": 219
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00002",
+  "text": "that would be, like, really interesting, I think. So you said that AI has some good and bad sides. So what are the good sides of it? Well, you know, in modern music AI, what you use the most is neural networks. And neural networks are just these fascinating pieces of maths and programming that are kind of super flexible to learn complex data transformations, like, as long as you're able to express what you're trying to learn with code and maths, and you have the data to support it, you're basically in many cases able to, you know, build a tool for that transformation, right? Oftentimes better than a human would do it, right? So if you kind of think about neural networks as these, you know, like, creative machines that you can use for, like, audio style transfer, or that kind of allow you to explore or modify audio in ways that were, you know, like, previously unavailable, I think that's great. I think that there are also many",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 124.3,
+  "end": 197.1,
+  "index": 2,
+  "n_tokens": 214
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00003",
+  "text": "you know, like, previously unavailable, I think that's great. I think that there are also many applications in, like, learning music, learning to play music, so, like, automated, you know, software for, like, vocal analysis, or for tracking your piano progress or whatever. So I think, like, the empowering side and the new interface side is, like, really, really compelling. And then on the other side, like, obviously, there's this case for copyright. So, again, as a performing artist and musician, I know how hard it is, you know, to make a living as a musician. So it's getting even harder when, like, streams of revenue, you know, such as royalties from your music, getting played, etc., when that's, you know, being kind of compromised or that model seems not to work the way it worked, right? Or there are these legal and ethical disputes",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 190.62,
+  "end": 259.5,
+  "index": 3,
+  "n_tokens": 198
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00004",
+  "text": "seems not to work the way it worked, right? Or there are these legal and ethical disputes that kind of, you know, leave you wondering. So I think, like, as long as we think about neural networks as this kind of next step in the evolution of musical instruments, I think we're in for a lot of super interesting, you know, inventions and ways of expressions. And how do musicians feel about it? Do they think that they feel threatened? Or do you think that they also see opportunities? Yeah. Well, a big part of musicians, you know, they think that the researchers are the bad guys, right? Because the algorithms are here to, you know, like, replace, blah, blah, blah. It's all that. But musicians are also, like, super tech savvy people. And there's like so many musicians, you know, among programmers, like, I'm sure that people who are listening to us right now, like, many of them play some sort of instrument, right?",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 250.86,
+  "end": 326.11,
+  "index": 4,
+  "n_tokens": 214
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00005",
+  "text": "people who are listening to us right now, like, many of them play some sort of instrument, right? And musicians are gearheads. They love gear. They can spend hours talking to you, you know, about guitars and strings and pedals and effects and drumheads and drumsticks and cymbals and whatever. And you can argue, you know, for hours about that. So a part of this new technology is just basically, you know, like new cool gear that you can create, like, cool new sounds with. And it just, you know, it opens up this kind of new dimension of tinkering and kind of tweaking algorithms. Sometimes it also, it kind of requires you to have a new skill set. For instance, like running Python scripts, or perhaps, you know, like running the training of some model or whatever, like, it's hard to expect, you know, someone to like learn Python in full just to explore some creative possibilities.",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 321.23,
+  "end": 388.27,
+  "index": 5,
+  "n_tokens": 202
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00006",
+  "text": "expect, you know, someone to like learn Python in full just to explore some creative possibilities. But many of these solutions, you just need to run some sort of script, right? And a couple of years ago, it wasn't super common for musicians, like, to do home recording, or to be, you know, like very knowledgeable about mixing techniques. And nowadays, almost everybody knows, you know, like, at least a little bit, right? So that part became really, like, democratized and became really accessible. And I think that the cool musical technology that some of the neural networks offer, that's gonna become, like, democratized and accessible as well. And do you think it's because of LLMs? Because nowadays, lots of people learn programming and program thanks to LLMs? Or do you think that musicians, like, do it just because they feel like they have to just to catch up, you know, like, try out new things? Yeah, yeah, yeah. And I think,",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 380.43,
+  "end": 441.71,
+  "index": 6,
+  "n_tokens": 212
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00007",
+  "text": "they have to just to catch up, you know, like, try out new things? Yeah, yeah, yeah. And I think, also, it's like easier than ever to start programming, right? So if you're using, like, an LLM assistant, you can just, you know, take the link to the repo or whatever what you, you know, don't know how to do, just ask an LLM, like, hey, how do I run this script? And if you get like a trace back and like a value error, or you can ask, like, hey, what's this thing and how do I fix it? So I think, you know, like getting into programming has gotten, like, more accessible than ever. And it's a really good time to use that knowledge and that skill, you know, for, you know, maybe something creative, right? So musicians create music and AI models often are trained on this music that is published on",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 436.59,
+  "end": 491.87,
+  "index": 7,
+  "n_tokens": 207
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00008",
+  "text": "knowledge and that skill, you know, for, you know, maybe something creative, right? So musicians create music and AI models often are trained on this music that is published on YouTube and Spotify, etc. Is that a problem? Yeah, that's a big problem. That's a big problem because, you know, there's like this huge legal gap right now that's being, it's like a melting pot right now. So there's, you know... How does it work? If I were a musician and I recorded a song and I published it on YouTube and everywhere, how can I prevent those companies to train their models on my data? Well, there are initiatives like in the European Union, like the opt-out mechanism, etc. But in practice, it's not working very well. So we see that if an aggressive startup wants to just scrape your stuff from whatever you, wherever you put it, they just do it, right? And so there is this interesting research area that's called data poisoning, actually,",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 477.07,
+  "end": 551.71,
+  "index": 8,
+  "n_tokens": 220
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00009",
+  "text": "just scrape your stuff from whatever you, wherever you put it, they just do it, right? And so there is this interesting research area that's called data poisoning, actually, so you can kind of inject, like, it's kind of like steganography? Steganography, that's how I should say it's steganography. But in like a more kind of, you know, like deep learning modern approach, right? So you kind of inject some, like, poison pill that makes the data either uninformative for the model, so the model doesn't learn anything from it, or even you can make the model kind of learn, you know, something opposite to what you planned. But that technology is not well researched for audio. Sometimes it introduces artifacts, sometimes, and it has to be notable, right? You don't want to break your music. Is it done by artists or is it done by those providers, for example, YouTube, Spotify, etc.?",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 538.35,
+  "end": 608.11,
+  "index": 9,
+  "n_tokens": 211
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00010",
+  "text": "Is it done by artists or is it done by those providers, for example, YouTube, Spotify, etc.? Yeah, I don't think there's there's any, like, data poisoning that has been, you know, put into production at scale. There's there's a lot of interest. So it's like a research area. It's like more like a proof of concept or like a conference paper type of, you know, level of advancement. But there's no good way of defense right now, right? So there's there's a bunch of legal lawsuits going on right now in a bunch of courts here and there. There's also no good way of reverse engineering a neural network. But this is also a research area. There are the research areas of explainability and interpretability. This is also what we do here at Warsaw University of Technology. And those are super interesting topics, not only because of the effects,",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 602.67,
+  "end": 666.19,
+  "index": 10,
+  "n_tokens": 201
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00011",
+  "text": "areas of explainability and interpretability. This is also what we do here at Warsaw University of Technology. And those are super interesting topics, not only because of the effects, because you really kind of get to, you know, kind of demystify this black box and look into its internals and find, you know, like the circuits that correspond to like human interpretable concepts. But yeah, but those are still those are still like research topics and not something that someone has already put into production at scale. So you mentioned that the AI music is a black box. So can you explain how does it work? So if I have if I type in a prompt, if I type in anything, so like what happens in the background? Right, right. So what you use nowadays is is like almost exclusively neural networks. So this is like the family of AI algorithms that get that approximate complex transformations of data. And it's trained on on data and you use GPUs. So this is why Nvidia is worth so much, right. But what happens actually",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 652.91,
+  "end": 729.23,
+  "index": 11,
+  "n_tokens": 217
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00012",
+  "text": "on on data and you use GPUs. So this is why Nvidia is worth so much, right. But what happens actually is like audio is a complicated modality. Like for a computer, audio is like this long, one dimensional sequence of numbers. It's like a list, right. And it's like a super long list. If you have the if your audio is like sample that a standard sampling rate of like 44.1 kilohertz, that means each second of audio is like 44,000 numbers. So in order to generate 10 seconds, you need like almost half a million numbers. The human ear is like very it hears very little artifacts. It's it's much easier to fool the eye than to fool that ear. So basically when you're generating raw audio, what you're doing is you're modeling like very complex relationships between numbers that are sometimes like hundreds of thousands numbers. So in general, it's like a very complex task. So basically what we've come up with is this",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 720.59,
+  "end": 793.39,
+  "index": 12,
+  "n_tokens": 216
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00013",
+  "text": "like very complex relationships between numbers that are sometimes like hundreds of thousands numbers. So in general, it's like a very complex task. So basically what we've come up with is this idea and this is probably the most science thing I'm going to say today is this idea of discrete representation learning. So basically you have a model that kind of compresses all possible sounds into like this alphabet that you can then kind of generate sequences of and then kind of upscale that back to audio. So basically like there's this learned latent alphabet that kind of, you know, then gets upscale to audio. That's one of the ideas. And another idea that you might have heard of is this idea of diffusion. So there's either the what we would call an autoregressive neural codec models, or there's this idea of diffusion models, which in a nutshell, they take noise and they kind of distill that noise into like the precise audio you want. So these are kind of abstract and really weird ways because",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 779.55,
+  "end": 858.59,
+  "index": 13,
+  "n_tokens": 216
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00014",
+  "text": "diffusion models, which in a nutshell, they take noise and they kind of distill that noise into like the precise audio you want. So these are kind of abstract and really weird ways because many people just think that neural networks just take audio and kind of cut it up like a sampling machine and rearrange the samples and like call it a day, right? So actually there's a couple of very interesting mechanisms going on. Like, you know, I'm biased in how I think about this, but there is some like, you know, like like audio understanding going on both in the like dimension of the content and like what is there in this music? Is this a low voice or a high voice or is this a guitar or a trumpet? And both in terms of like the signal is the signal good quality. Is it, does it have, you know, like any noise, like etc. So there's a bunch of like signal understanding and content understanding going on. And what are some technologies that",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 841.55,
+  "end": 907.95,
+  "index": 14,
+  "n_tokens": 208
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00015",
+  "text": "signal understanding and content understanding going on. And what are some technologies that you use for this? So for example, can I train my own model? Yeah, like locally? Yeah, yeah, yeah. So there's, if, when people ask what's the first model that I could try and play with, there's this awesome model developed at Aircam. That's a research facility, like a creative machine learning signal processing type of institution in France. And there's this model called Rave. It's real time audio variational auto encoder. And it's a pretty small and very fast neural network. You can train it in like a day or two, like using free online resources on like a small set of audio and it's a style transfer neural net. So then you can perhaps like sing into the net. And if you trained it on, for example, like trumpet or drums or something else, it's gonna try to change your voice into that instrument. And the most",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 902.35,
+  "end": 971.23,
+  "index": 15,
+  "n_tokens": 209
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00016",
+  "text": "drums or something else, it's gonna try to change your voice into that instrument. And the most fun part is when you try to do like a totally out of domain style transfer that is to kind of use an input signal that that is as far as possible from what the neural network was trained on. So then you get kind of these weird results. And you also get this nice feature that Rave models are kind of interactive and steerable. So so there are ideas to encompass neural network within neural networks within like VST plugins, which is a very musician friendly format. So you get your knobs, you get your keys, you get like your control surfaces you're used to. So yeah, I'd say rave rave real time audio variational auto encoder. The original author is Antoine Caillot and the GitHub repo is like open rave is pip installable. So so you can just I would start over there. And most of those are using Python, right? And absolutely most of",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 965.07,
+  "end": 1038.51,
+  "index": 16,
+  "n_tokens": 209
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00017",
+  "text": "just I would start over there. And most of those are using Python, right? And absolutely most of those tools are using Python. I mean, there are a couple of interesting Python libraries for audio processing. Like there's the classical Librosa, there is there's pedal board, there's Pio, if you need like low level synthesizer stuff, if you're more on the scientific or like signal analysis side, you're going to use you know, like NumPy and SciPy and those tools. Then you know, then there's all of these like little weird models developed in some weird communities of people like who are in between like creative computing and programming and music. And so sometimes, of course, you spend like an hour or two or more like trying to get like an obscure repo to work. But there are many like small models that work out of the box. And in most cases, they do much more interesting things than just you know, like consuming a",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 1031.71,
+  "end": 1099.63,
+  "index": 17,
+  "n_tokens": 205
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00018",
+  "text": "in most cases, they do much more interesting things than just you know, like consuming a prompt and spewing out some some slop, right? And what is the impact of AI on the music industry? Because I've read that the concerts are getting bigger. On the other hand, musicians don't like AI and many people are afraid of it because they are threatened by it. What do you think will happen in five or 10 years? Do you think that AI music will become more popular? Or do you think on the other hand that concerts and music produced by humans will be more popular because people just don't want AI? Yeah, well, I think that like live music is it's going to be fine. I mean, people just like to see other people doing difficult things, right? So like if you go to a concert and you see like an amazing you know, like piano player or amazing band or whatever, like that's just awesome, right? I mean, there's just some kind of inner",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 1094.43,
+  "end": 1155.47,
+  "index": 18,
+  "n_tokens": 212
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00019",
+  "text": "whatever, like that's just awesome, right? I mean, there's just some kind of inner mechanism that makes us, you know, find doing difficult stuff, especially in public, like super compelling, right? And I think that's not going away. I think there are some business applications where the threat is is like really big. That's like, you know, like like all sorts of background music or like music for content that you don't like elevator music or like, yeah. And you know, and it's all fun and good, but like there's a significant amount of people whose day job it is, you know, to write music like that and create music like that. And there's nothing wrong with that, right? So there are like professional groups that feel threatened. There are people who feel, you know, injustice in terms of the royalties, right? Because you, I mean, you know, like, it might be a weird thing, but like artists like getting paid for their work,",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 1148.91,
+  "end": 1227.23,
+  "index": 19,
+  "n_tokens": 214
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00020",
+  "text": "I mean, you know, like, it might be a weird thing, but like artists like getting paid for their work, which is not obvious to everybody. It seems so. Yeah. So there is a significant amount of pushback. However, that's mostly for, you know, like the most, you know, like the most superficial kind of prompt goes in, slop goes out, family of solutions, right? Whenever you start presenting these topics as, you know, like a viable extension of your like creative arsenal and like of your ways of expression, you kind of start doing like the quirky, interesting stuff like the environments for like evolutionary composition. Like, for instance, there's this awesome lab in Iceland, the Intelligent Instruments Lab, and they do like a lot of these programming environments where you process MIDI in different ways. Or there's this Polish collective named Pangenerator, which- Mr. Generator. Yeah, precisely, where they build their own weird instruments that",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 1219.15,
+  "end": 1301.63,
+  "index": 20,
+  "n_tokens": 202
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00021",
+  "text": "environments where you process MIDI in different ways. Or there's this Polish collective named Pangenerator, which- Mr. Generator. Yeah, precisely, where they build their own weird instruments that have, you know, like touch sensitive surfaces or like lasers or scientists love lasers, right? So or like you play with light or other mechanisms. And there's always like a tiny bit of like machine learning or like algorithmic composition going on there. And that I think is like super important. This may not be music that, you know, gets played on the radio. It's more like music you would hear on an, you know, like an experimental festival or in venues, you know, that kind of accept like more experimental stuff. But that community of artists, I feel is like very curious, welcoming and is very fast to absorb all of the technical nuances. To me, it sounds like the barrier to participate and get paid got a bit higher because if you",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 1283.87,
+  "end": 1356.59,
+  "index": 21,
+  "n_tokens": 198
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00022",
+  "text": "To me, it sounds like the barrier to participate and get paid got a bit higher because if you need any kind of music like you're shopping mall, for example, you don't need an artist anymore, right? So if you're a top artist, of course, you will always get paid. The question is if it's enough, like when we compare it to other industries, but you will always have a job, right? But then like if you're just an average one or below average one, businesses would probably prefer just to generate some AI music then to pay artists. Yeah, I know, right? Yeah, absolutely. And you know, and apart from that, like we still don't really know or understand like, what are the, you know, like, what's the legal approach? Is it even legal to, you know, like stream an endless stream of slop in your shop or what? I mean, if you're doing that, I mean, that's your problem, I guess,",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 1350.75,
+  "end": 1414.43,
+  "index": 22,
+  "n_tokens": 216
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00023",
+  "text": "slop in your shop or what? I mean, if you're doing that, I mean, that's your problem, I guess, but it doesn't really sound like something like, you know, like an interesting, sustainable and most of all, like a fair model for the artists, right? So it's always going to be no easier for the ones that are already big. And we've already seen this with recommender systems, right? So as people are kind of getting more and more annoyed by, you know, like AI slop and like the slopification of the internet and like bots that kind of make many, you know, portals, glass and less usable, right? There also has been like a bit of pushback for recommender systems because they are very, you know, kind of artificial and maybe not always you want to be served something by an algorithm, maybe like this, you know, kind of more traditional way of like talking about music with people who sometimes are more knowledgeable about some genre",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 1406.99,
+  "end": 1481.87,
+  "index": 23,
+  "n_tokens": 214
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00024",
+  "text": "want to be served something by an algorithm, maybe like this, you know, kind of more traditional way of like talking about music with people who sometimes are more knowledgeable about some genre and then you're more knowledgeable, maybe like that's going to make a comeback in some time. But yeah, but the bias is there not only in the applications of, you know, like the most scaled up business applications of neural networks, but also, you know, about the way we consume music and the bias in recommender systems. So yeah, it is difficult for the small artists and like every big artist was a small artist at some point, right? So I think we should be definitely thinking about that more and more. And what are some fun AI projects? So I heard that there is an AI song contest, so something like Eurovision for AI. Can you tell us a bit more about it? Yeah, yeah, yeah. So since a couple of years, I don't remember what was the first year actually,",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 1466.35,
+  "end": 1537.71,
+  "index": 24,
+  "n_tokens": 209
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00025",
+  "text": "Yeah, yeah, yeah. So since a couple of years, I don't remember what was the first year actually, but since a couple of years, there's this very nice and fun AI song contest, which is called the AI song contest. And basically what you do there is you submit your song, co-created with AI, and you have to use the AI in creative ways. So apart from the music itself, you also describe how you use the AI. So obviously like a prompt goes in, slop goes out. That's not a very good submission for this contest. So what is a good submission? Yeah, like one that I remember really well was called Ada's lullaby. So it was a generative model for lullabies and the guy trained it on like short melodic lullabies for children. And the guy trained it on his like five or six year old daughter. So the melodies that were putting her to sleep the fastest, those were being used in the next",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 1531.15,
+  "end": 1605.87,
+  "index": 25,
+  "n_tokens": 205
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00026",
+  "text": "for children. And the guy trained it on his like five or six year old daughter. So the melodies that were putting her to sleep the fastest, those were being used in the next iteration of training. And after like a couple of hundred iterations, he came up with this like personalized lullaby. And that's just awesome. I mean, like how cool is that, right? There are also some other ideas. Like one of the winning submissions actually, I think in 2022, was this submission that kind of used a differentiable digital signal processing model to kind of get the tuning system from a Thai ethnic instrument into like Western instruments and like to kind of, you know, recreate the characteristics of the Thai kind of the trails and the articulation. So like stuff like that is like extremely cool. And so yeah, the AI song contest is like one of those venues. And it got pretty big actually, I think this year in the jury, there's Jordan Rudis from Dream Together. There's people from",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 1591.47,
+  "end": 1671.39,
+  "index": 26,
+  "n_tokens": 211
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00027",
+  "text": "I think this year in the jury, there's Jordan Rudis from Dream Together. There's people from MIT, from Berkeley College of Music and like a couple of other respectable institutions. And how many songs were there? Oh, I think it's definitely in the tens or even in the hundreds. But in the final, it's like about like 10 or 20 submissions. I think the community voting for this year's edition might still be going on. So yeah, be sure to check that out. Planning to submit a song yourself? You're a musician and an AI person. It's too late this year, but next year, who knows, maybe me or maybe me with some colleagues or maybe we'll reactivate some of our older projects or maybe with some students. We're also kind of starting to work with the musical university here in Warsaw, the Friedrich Chopin musical university. We're working with the Society of Author Zeigs. We're working with some other institutions as well. So",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 1666.11,
+  "end": 1741.63,
+  "index": 27,
+  "n_tokens": 212
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00028",
+  "text": "university here in Warsaw, the Friedrich Chopin musical university. We're working with the Society of Author Zeigs. We're working with some other institutions as well. So it may be just so that yeah, it may happen. It may happen in the foreseeable future. And if someone would like to learn more about AI music, what are some interesting resources? Yeah, that's a really good question. So I think that a great place to start is the tutorials from Ismir. So Ismir is the International Society for Music Information Retrieval Conference. That's like the primary kind of music informatics conference. And each year there's like a set of tutorials and those are always extremely high quality. So there's this one from a couple of years ago called Music Classification Beyond Supervised Learning. Music Classification Beyond Supervised Learning, that's enough I think to find. And that's an excellent introduction to music processing and music machine learning in general. If you know a bit of Python and you",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 1729.79,
+  "end": 1810.43,
+  "index": 28,
+  "n_tokens": 209
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00029",
+  "text": "Beyond Supervised Learning, that's enough I think to find. And that's an excellent introduction to music processing and music machine learning in general. If you know a bit of Python and you even don't know anything about machine learning, that's a great resource. There's a very classical book called Fundamentals of Music Processing. I know that all books that start with the word fundamentals or introduction, those are very simple. But Introduction to Fundamentals of Music Processing by Maynard Miller, that's one of the like golden positions. And like in general, I think like the tutorials and the stuff that gets published at Ismir. And equally from the more kind of artsy side, there's also this interesting conference called NIME, N-I-M-E, which stands for New Interfaces for Musical Expression. And those are more on the art side. So that's the main focus. So they are sometimes like a bit less focused on the programming, which makes the",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 1797.71,
+  "end": 1870.19,
+  "index": 29,
+  "n_tokens": 205
+ },
+ {
+  "id": "ai-generated-music-mateusz-modrzejewski:00030",
+  "text": "New Interfaces for Musical Expression. And those are more on the art side. So that's the main focus. So they are sometimes like a bit less focused on the programming, which makes the programming part more accessible. It's a bit easier sometimes. So perhaps, you know, like diving into some of those, you know, ideas that have been already turned into like, you know, interfaces for musical expression, some of those I think that are a good place to start. And even, you know, like see what's possible, right? Right. So Ismir books and local communities of AI musicians. Absolutely. Absolutely. Yeah. Thank you for coming. Oh, thank you for having me. Awesome.",
+  "episode": "AI-Generated Music - Mateusz Modrzejewski",
+  "start": 1854.27,
+  "end": 1903.95,
+  "index": 30,
+  "n_tokens": 147
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00000",
+  "text": "So, hence where the term wheel file came from, the whole Cheese Shop thing came from the Monty Python sketch. And Python Packaging Index was created out of a need users, you know, there's a use case where users have sadly passed away, but there are multiple people who probably want to, you know, maintain the project or replace the project with something. So those things take different kinds of courses of work. Yeah, yeah, I believe we are. Yeah, the last time I checked the ticker is around 945,000, you know, plus or minus, couple hundred users. So I'm pretty sure we'll be hitting one million users. Hi, everyone. Have you ever wondered what does a PyPI specialist do? Recently, I had the chance to talk to Maria Ashla. Maria is the PyPI Support Specialist at the Python Software Foundation. Prior to PSF, she has worked at the Brain and Creativity Institute at the USC, working with the New York Science of Creativity.",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 0.0,
+  "end": 61.74,
+  "index": 0,
+  "n_tokens": 208
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00001",
+  "text": "Prior to PSF, she has worked at the Brain and Creativity Institute at the USC, working with the New York Science of Creativity. Maria is also the founder of the Magic Light bulb, a tech and product consulting firm. What does a PyPI Support Specialist do? Great question. So, a PyPI Support Specialist does a lot of different things, but as I've done my role for a year now, I realized that it's not just support in, quote, unquote, what people think as tech support. It's a lot more than that. If you create a Venn diagram of my role, a PyPI Support Specialist entails working with Dev. So I would even argue that it's more DevRel Advocate, DevRel Relations. If you look at the other side of the Venn diagram of my role, you can see it's also, you know, what kind of features can we offer? What kind of other services can we offer our users to PyPI?",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 55.24,
+  "end": 115.29,
+  "index": 1,
+  "n_tokens": 210
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00002",
+  "text": "you can see it's also, you know, what kind of features can we offer? What kind of other services can we offer our users to PyPI? So I would even say it entails a bit of technical product. So a whole gamut of things. And can you tell us something about the history of PyPI and what is PyPI in general? So PyPI stands for the Python Packaging Index and it was formerly known as the cheese shop. So hence where the term wheel file came from, the whole cheese shop thing came from the Monty Python sketch. And Python Packaging Index was created out of a need to better manage and distribute Python packages. So it was officially born in 2003 and I believe the first packages were hosted in 2005. So PyPI has been around for most 20 years. And how many people do work on PyPI? Are you the only person employed to work on it or are there more people in your team? So prior to me, we had lots of generous volunteers dedicating their time and expertise.",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 108.49,
+  "end": 180.09,
+  "index": 2,
+  "n_tokens": 217
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00003",
+  "text": "Are you the only person employed to work on it or are there more people in your team? So prior to me, we had lots of generous volunteers dedicating their time and expertise. But right now I'm part of the Python Software Foundation. So I am part of the PyPI support team along with Mike Fiedler, who is a PyPI support engineer. And we also have our Infrafolks supporting PyPI on the Infrasty side. Ederbin, director of infrastructure and Jacob Coffey, infrastructure engineer. Yeah, so it's four of us. What are some most common issues that you're dealing with? So when I came on, we had a huge, huge backlog of account recovery issues which entailed, you know, people not signing up for 2FA or people losing access to their recovery codes or 2FA. 2FA is now mandatory, right? 2FA is now 100% mandatory.",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 167.49,
+  "end": 228.69,
+  "index": 3,
+  "n_tokens": 197
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00004",
+  "text": "people not signing up for 2FA or people losing access to their recovery codes or 2FA. 2FA is now mandatory, right? 2FA is now 100% mandatory. So if you're a PyPI user and you've not signed up for 2FA yet, please do. We also had a huge backlog of PEPFY for one requests. So when I talk about backlog, the backlog was delayed account recovery specifically by five months. And PEPFY for one request by a year and four months. But I'm happy to say that as of now, well, the exception of this week since I'm at EuroPython, the backlog for both account recovery and PEPFY for one requests are current with an average triage time for account recovery, taking between one and a half to two days versus PEPFY for one request taking an average of one week, versus what it was before, which was a year and four months.",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 217.59,
+  "end": 274.39,
+  "index": 4,
+  "n_tokens": 197
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00005",
+  "text": "taking between one and a half to two days versus PEPFY for one request taking an average of one week, versus what it was before, which was a year and four months. And how many tickets do you have in your backlog just to have some sort of idea when you said that it was delayed? How much of work do you actually have? Oh, that's a great question. If I have to go back and look at my GitHub history, I would say over 500 plus that I probably closed. It's probably even bigger than that, but just to be on the conservative side, yeah. And are those some very easy tasks that you can resolve immediately on your own? Or does it require lots of coordination, for example, with other teams or other team members? That's a great question. It actually depends on a lot of variables. It depends on, you know, how fast the user gets back to us because we do have a set of processes, which I'm in the process of documenting and creating a workflow to share with our users",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 264.29,
+  "end": 330.49,
+  "index": 5,
+  "n_tokens": 220
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00006",
+  "text": "which I'm in the process of documenting and creating a workflow to share with our users so that they know exactly what happens when they put in an issue, a ticket. So it really does depend on the user. If a user gets back to us with the information we requested from them, then, you know, closing the issue is fast, versus if the user has any other kind of issues or lack of information. Say we require our users to have a valid public repo of their project. So lots of times users may not have that for whatever reason. So those issues take a little bit more time in terms of account recovery. For PEPFy, for one, the process takes a little bit longer because, you know, they may be just summarized what is PEPFy for one. Yeah, sure. So a very TLDR version of a PEPFy for one is say you have a project called SnakeRabbit and you created it, you had lots of hopes and dreams for it, but then, you know, life happened and then you kind of stepped away",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 324.69,
+  "end": 390.69,
+  "index": 6,
+  "n_tokens": 219
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00007",
+  "text": "and you created it, you had lots of hopes and dreams for it, but then, you know, life happened and then you kind of stepped away and then say, I come in and I really want to name my project SnakeRabbit, but you already own that space. You already own the name and the project. So again, depending on the variable, if I want to continue to maintain your project, there's a different process versus if I want to completely replace your project, there's somewhat similar but also different process. So again, it's a nutshell, a TLDR version of what a PEPFy for one request looks like. And what if you ask a user for additional information but you're unable to reach out to them for any reason? What happens? Do you just automatically close the issue after some time or what are the processes? I think that's also very context and issue dependent. I make sure to over communicate with our users to make sure that no matter",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 382.49,
+  "end": 440.09,
+  "index": 7,
+  "n_tokens": 206
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00008",
+  "text": "I think that's also very context and issue dependent. I make sure to over communicate with our users to make sure that no matter where in the world they are, they're hearing from us before, you know, we completely close the issue due to, you know, non-response or things like that. Account recovery, it's a little easier to do because, you know, if a user is no longer interested in getting their account back for whatever reason, okay, they can always open a new ticket for PEPFy for one request. It's a little bit more complicated because the timeline as stated in the PEP itself and listeners or viewers to this can Google PEPFy for one and the PEP will come up for some more detailed reading, but it really depends on the context of the project and the communication because there are times where, you know, users, you know, there's a use case where users have sadly passed away, but there are multiple people who probably want to, you know, maintain the project or replace the project with something.",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 429.09,
+  "end": 494.99,
+  "index": 8,
+  "n_tokens": 216
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00009",
+  "text": "there's a use case where users have sadly passed away, but there are multiple people who probably want to, you know, maintain the project or replace the project with something. So those things take different kinds of courses of processes and time then say to people who are amicable about, oh, you can totally take over my project. So it's really context-dependent. Right. And you mentioned opening a ticket. How do you communicate with your users? Do you have a GitHub repository where they create a ticket or do you have any sort of portal for users? We have our own GitHub issue tracker and for confidential stuff, we also, after say user opens a GitHub ticket for account recovery or PEPFy for one, for any kind of sensitive information such as email or any other thing, we then our process includes, you know, using our own in-house email kind of internal email system that users can email us with more information and the process goes from there. And do you have any self-service there where users, for example,",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 485.99,
+  "end": 551.89,
+  "index": 9,
+  "n_tokens": 218
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00010",
+  "text": "that users can email us with more information and the process goes from there. And do you have any self-service there where users, for example, they have any issues where they can go through some workflow on their own without having to communicate with you? I think it depends if they already, say for example, they have 2FA setup, their account is, you know, they still have their recovery codes but they just need a password reset. I think that is pretty self-serving, but if for whatever reason, you know, they did not sign up for 2FA, then our systems automatically un-verify their email and if your email is unverified, then you can't really do a self-serving password reset. So just as an example, so those are some things that then a human being has to come in and do all the checks and make sure, you know, help them out. And you mentioned that most issues that you are dealing with are related to account recovery into 2FA and PEP 501. 501. 501.",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 544.39,
+  "end": 608.39,
+  "index": 10,
+  "n_tokens": 213
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00011",
+  "text": "And you mentioned that most issues that you are dealing with are related to account recovery into 2FA and PEP 501. 501. 501. Are there any other issues that you are also dealing with or are there any other new PEPs or new changes where you expect lots of issues in coming in the following weeks or months? Oh, that's a good question. I think another support request that I've been tackling are file and project limit requests. We get requests to increase the limit that folks can upload their files or projects. Regarding future PEPs, I'm not aware of anything new that is coming up that might affect, but yeah, so I would say for now, I don't think so. One of new features is PIPI organizations. What are they and how do they work? Yes, so PIPI orgs was actually introduced in 2023, but it went in a bit of a hibernation, but now it's back up again. And it was created to help larger communities or larger companies with big projects",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 598.19,
+  "end": 668.39,
+  "index": 11,
+  "n_tokens": 214
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00012",
+  "text": "but it went in a bit of a hibernation, but now it's back up again. And it was created to help larger communities or larger companies with big projects with multiple team members manage roles and manage projects better. So we're looking into increasing some features for people who are signed up with PIPI orgs because we want to know from the community what else can we do to make PIPI orgs exciting because right now the big feature is if you're part of a big community and you have several people who need access to the same project, you don't have to individually worry about somebody leaving the project or package and everybody scrambling to get access to it. Now if you're part of PIPI orgs, community or company, it's seamless in terms of role and project management. Right, so that means that you have an organization inside that organization. You have some users or some groups and admins and they can manage access and everything of their own without having to contact you. I mean, yes, unless they have a problem.",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 657.09,
+  "end": 726.79,
+  "index": 12,
+  "n_tokens": 219
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00013",
+  "text": "You have some users or some groups and admins and they can manage access and everything of their own without having to contact you. I mean, yes, unless they have a problem. Yes. And what are some existing features there except of just having this organization? Are there any more features there? So I'm glad you asked. So I'm in the process of doing an outreach, a PIPI org outreach and I want to hear from the community what they would like to see PIPI orgs offering because as you mentioned, that is kind of the only big feature we have right now but I think PIPI orgs can be so much more and I don't want to do any kind of leading questions or bias our users into what kind of features we can or cannot offer. So that's why I'm not really going to mention some things that we may offer or may not offer. That's why we're doing this outreach to make sure we want to hear from our users first",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 715.69,
+  "end": 774.29,
+  "index": 13,
+  "n_tokens": 206
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00014",
+  "text": "or may not offer. That's why we're doing this outreach to make sure we want to hear from our users first and the bigger buy-in we get, we see from the data, oh, our users say want a bigger limit, a bigger increase in file limits or projects as just an example, then we can offer something there or users want some other kind of features. So we want to just get buy-in from the community before announcing our shipping out features. And is it meant to be used only by commercial entities, nonprofits? No, so I know when PIPI orgs came back on, there's some tiny chatter on discuss that, you know, oh, is PIPI orgs going commercial, blah, blah, blah. But no, you know, we're obviously open source and our community orgs. I believe last time I checked, we have over 2,000 community orgs. Community orgs, it's free.",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 768.79,
+  "end": 825.29,
+  "index": 14,
+  "n_tokens": 200
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00015",
+  "text": "I believe last time I checked, we have over 2,000 community orgs. Community orgs, it's free. We do have some company orgs and they pay a tiny, tiny, tiny small fee for the service, you know, because it's open source and the resources that help run PIPI, a lot of it comes from the generosity of sponsors. So we would like to be at a place where we can still make sure PIPI is self-servicing and continues to exist and help users. And we want to make sure the reason we have a company specific org, because companies, compared to, say, community orgs, they have a lot of funding. And, you know, if they, yet they get the same kind of benefits as communities do. And if they have, you know, more needs, I think it's fair for them to kind of chip in. It's really pennies, in my opinion, for companies to contribute. So, but now the rumors about commercialization are just that, rumors and faults.",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 818.79,
+  "end": 887.59,
+  "index": 15,
+  "n_tokens": 218
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00016",
+  "text": "It's really pennies, in my opinion, for companies to contribute. So, but now the rumors about commercialization are just that, rumors and faults. So, yeah. Yes, PIPI is a very important and big project and important to think about the sustainability of how to make sure that it's still up and running, because it's serving so many users across the globe. We are actually close to a million users. Wow. Yeah, yeah, I believe we are. Yeah, the last time I checked the ticker is around 945,000, you know, plus or minus a couple hundred users. So, I'm pretty sure we'll be hitting one million users very soon. And so, maintained by a very small team of a few people who are employees. Exactly. And passionate about making sure that PIPI continues to exist and serve our community. I wonder how often it happens that people makes PIPI, PIPI, and PIPI. Oh my goodness.",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 875.89,
+  "end": 939.69,
+  "index": 16,
+  "n_tokens": 205
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00017",
+  "text": "And passionate about making sure that PIPI continues to exist and serve our community. I wonder how often it happens that people makes PIPI, PIPI, and PIPI. Oh my goodness. I mean, during the talk that I gave, yeah, a lot of people, you know, don't even sadly still pronounce PIPI correctly. And the correct pronunciation, by the way, it's Pi emoji, P emoji and I emoji. I believe we have it somewhere on our website. So yeah, PIPI obviously is the Python Packaging Index and PIPI. I believe is the Python Packaging Authority, completely different thing. And I forget what PIPI is, so. It's a variant of Python. And if people would like to learn more or to communicate with you, do you have any public documentation? Yes, I'm glad you asked. So people can always go on PIPI.org to just learn about everything about PIPI. And if they want to know something about me or ask questions about PIPI directly,",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 925.49,
+  "end": 992.69,
+  "index": 17,
+  "n_tokens": 220
+ },
+ {
+  "id": "inside-pypi-support-maria-ashna:00018",
+  "text": "So people can always go on PIPI.org to just learn about everything about PIPI. And if they want to know something about me or ask questions about PIPI directly, they can email me at Maria at Python.org. I'm also at Despy-Brain at GitHub. And something that I've been working on that I think our users will be excited is we did not previously have any kind of documentation or clear public processes on what happens when a user submits a ticket for account recovery or PEPFI for one. So I'm in the process of creating workflow and documentation that our users can see because I believe in transparency and an open source, it's important to be transparent and let users know what we're up to. So they know what to expect. Exactly. Yeah. Thank you so much for coming. Yeah, thank you for having me.",
+  "episode": "Inside PyPI Support - Maria Ashna",
+  "start": 978.99,
+  "end": 1034.69,
+  "index": 18,
+  "n_tokens": 183
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00000",
+  "text": "We're sharing photos of a woman who was in toilet. If that is not bizarre enough, I don't know what it is. Right now, even for Europe, it's a big challenge because it is again and again things like chat controller coming back with a different name. Is your vacuum cleaner spying on you? Sounds like a joke, but it's not. In this episode, I had the chance to talk to Kushal Das. Kushal is a public interest technologist and core team member at the Tor Project, core developer of CPython, and director at the Python Software Foundation. We talked about privacy, surveillance, and what it actually takes to protect people online. On your t-shirt, it's written that privacy is a human right. Is it? Yes, we believe so, and it's extremely important that many people actually get reminded again and again because in the modern world, and thanks to this thing called computer, and all the new technologies we're building around,",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 0.0,
+  "end": 56.08,
+  "index": 0,
+  "n_tokens": 210
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00001",
+  "text": "that many people actually get reminded again and again because in the modern world, and thanks to this thing called computer, and all the new technologies we're building around, it's like it's keeping it as a sane human right is becoming a very difficult. And many of the parts of the world, we actually do not have that as a right. So I believe so firmly. And what sparked your passion for privacy? In the past, you were focused on technologies, but nowadays you are focusing on freedom and privacy. How did it all started? So as you mentioned, yes, I was more interested about technology in general, like learning things, how to build or how to break. All of them were fun, but at the very, I would say the beginning of my technology journey, I was lucky enough to meet a few, or made a few friends from Chaos Computer Club Berlin. And a lot of ideas have about hacking, how technology works, how to make things better for the world comes from there. But also along with the time started,",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 46.4,
+  "end": 110.36,
+  "index": 1,
+  "n_tokens": 215
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00002",
+  "text": "And a lot of ideas have about hacking, how technology works, how to make things better for the world comes from there. But also along with the time started, you know, you started growing mentally a little bit, read more, learn more what happened before in the world. And I was lucky enough to get married to a lawyer, Anvesha, my wife, I mean, she's lawyer by degree. So after the marriage started learning a lot more things, I had no clue about how the world works. I almost spoke Bengali, but yeah. And that's when like more and more slowly, I was like, like, I think it started at home. And then like I was getting more and more focused on like, at first maybe in the security side, but then it's like, oh, like we need more people looking at privacy and rights and like freedom. It's very easy to say that we are free, but if we start like, are we? When people ask, then start looking at things.",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 99.72,
+  "end": 153.08,
+  "index": 2,
+  "n_tokens": 213
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00003",
+  "text": "looking at privacy and rights and like freedom. It's very easy to say that we are free, but if we start like, are we? When people ask, then start looking at things. So that's how I slowly move more and more like, oh, we need more people who can understand or do things. So that's how jumped from technology to privacy and security like things and focusing more on privacy, helping people out. And I believe, I think as you said, like in the beginning, things are becoming very complex. So having that rights or understanding is very difficult right now. One of the projects you were working on and maintaining for a long time is SecureDrop. Can you tell us something a bit more about this project? Yes. So SecureDrop, it started long time ago as a different name by Aaron Swarch, who is sadly no longer with us anymore. But after he passed away it was, I think, that then it was Nemo's dead drop. If I remember correctly, then Freedom of the Press Foundation took over the project",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 143.44,
+  "end": 202.88,
+  "index": 3,
+  "n_tokens": 220
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00004",
+  "text": "But after he passed away it was, I think, that then it was Nemo's dead drop. If I remember correctly, then Freedom of the Press Foundation took over the project and it became SecureDrop, became much bigger. It's an open-source whistleblower platform which is used across the world where people can leak information without the fear of any three-letter agency. It's written in Python. It uses the same technology we use in our daily life, same tools which we use to build our other corporate projects. And it also uses the privacy aspect which comes from the TAR project itself. And along with all the different things and more particular focus on security, it helps people to become a whistleblower and leak and talk to the journalist in a better way. So how does it work? If I were a journalist, for example, or a whistleblower in a country with a very oppressive regime, how could I talk to someone by using SecureDrop? So, generally, the organizations, there are multiple places, one is SecureDrop,",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 192.44,
+  "end": 257.76,
+  "index": 4,
+  "n_tokens": 217
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00005",
+  "text": "with a very oppressive regime, how could I talk to someone by using SecureDrop? So, generally, the organizations, there are multiple places, one is SecureDrop, they have also, like, there is also in the website, there is a directory. Many news orgs, when they run in their main newspaper, if they're physical newspaper or in their website, they provide the URL or they give a page where they talk about SecureDrop. Like, the idea is, generally, you use something called tails, if possible. If nothing else or a normal TAR browser, connect, open that .onion site, which is the, like, TAR service, and after you open that on-ion address, you can actually create your first time. When you create your account first time, or when you say that I want to log in first time, you get a one-time password, which is also both your username and password at the same time. And that's what I remember, I did not look into the new UI,",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 247.08,
+  "end": 305.64,
+  "index": 5,
+  "n_tokens": 214
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00006",
+  "text": "you get a one-time password, which is also both your username and password at the same time. And that's what I remember, I did not look into the new UI, if there is any more changes. And then what you can do is, you can upload documents, or you can write down text. And journalists, they have a special Qubes OS based, which is a Linux-based opening system where every app can run a separate VM and they can connect via TAR to their server in a different interface and they can decrypt it in a safe environment and see the messages. So... And what were the biggest technical challenges when you were implementing it? I'll say, like, one thing in general, not only for secure drop or any project which talks about security and privacy, and then the word other term is usability. I think that's always a big challenge. We can make things really secure. I guess, like, we always joke about it, that computer which never boots this thing,",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 296.16,
+  "end": 355.08,
+  "index": 6,
+  "n_tokens": 215
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00007",
+  "text": "I think that's always a big challenge. We can make things really secure. I guess, like, we always joke about it, that computer which never boots this thing, that's the best secure computer. So that's always a challenge, like how can you keep security and privacy of people and data while it's keeping it usable? So I think a long time ago, I discovered that the project that, like the journalists, what they see and how they do, they can do it far better if they have only, like, in from Qubes OS instead of going into a secure room using one particular computer with tails, but maybe using Qubes is an easier solution for them. So, I mean, it enables us, the community enables us to do this work. And how did you earn trust for people living in those regimes? Because I guess that for those people, they were basically risking their life by whistleblowing. How did you earn their trust? Have you ever had any issues with people,",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 347.56,
+  "end": 407.76,
+  "index": 7,
+  "n_tokens": 209
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00008",
+  "text": "Because I guess that for those people, they were basically risking their life by whistleblowing. How did you earn their trust? Have you ever had any issues with people, for example, not trusting you or being afraid to use it? So, here is a good thing about SecureDrop or the project itself. The project people don't have anything to do with the actual whistleblowing itself. They, when people whistleblow, they whistleblow a particular news organization. They are talking to the journalist. So, the community generally trusts SecureDrop. They can, because it's open source code, they can read and verify how the code works, but normal people don't. They only can trust that news org they are talking to. So, most of the time, they may not even know that they are using SecureDrop. They just know that the organization said that use this website, use this store and talk to us. So, it's not about SecureDrop or any project itself, but it's trusting the journalist, correct?",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 394.88,
+  "end": 451.4,
+  "index": 8,
+  "n_tokens": 217
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00009",
+  "text": "that use this website, use this store and talk to us. So, it's not about SecureDrop or any project itself, but it's trusting the journalist, correct? One thing I always say to many people that our job is to help some other people at doing their things done. We talk a lot about like, you know, data science, Python, Rust, speed, performance, but that's most of them is not helping other developers, but the final end product is to build something which is going to make other human lives better. So, that same thing goes here. It's like we are only building tools so that journalists and the people who are actually working on human rights or lawyers, their life becomes better. People can talk to them safely. So, that's the answer for that. And you also mentioned TOR. The mainstream media always focuses on negative aspects of it and on all negative things that you can find there. Do you think that TOR is a very bad technology or are there any positive sides of it",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 442.92,
+  "end": 502.64,
+  "index": 9,
+  "n_tokens": 213
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00010",
+  "text": "The mainstream media always focuses on negative aspects of it and on all negative things that you can find there. Do you think that TOR is a very bad technology or are there any positive sides of it and what can we do to challenge that narrative that it's only negative? So, that's a good question because discussions like this can help to change the narrative. That's where it starts. Many people completely misunderstand what TOR is, how it works, like even the basics of the idea because as you said, people who can control media or people who can control the narrative, they have everything. So, when we tell people the TOR project, the code base and everything else open source, many people look at us and it's like in its open network and then when we tell that it's another nonprofit which is based upon U.S. and it works just like many other nonprofits work around the world. Many people have questions and that's where I believe that controlling that narrative, pointing the people that how TOR enables people",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 490.24,
+  "end": 549.24,
+  "index": 10,
+  "n_tokens": 214
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00011",
+  "text": "and it works just like many other nonprofits work around the world. Many people have questions and that's where I believe that controlling that narrative, pointing the people that how TOR enables people to connect to information across the world. I think that's much more important. Many times over the talks, it was shown like in so many countries, social media is blocked, correct? Or you cannot even read the news organization's reports, many things and TOR enables those people in a safe way to browse those websites and access information. So, it's still, it's the narrative. It's like who can control the information? Who are allowed to read or not? I think long time ago, if I remember correctly, books, people were scared of because books can spread knowledge and people are really scared like, oh my God, people will have knowledge and that can change the world. So, I believe that has to happen with all of us together, just pointing out people that TOR and how it works and why it's good for privacy",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 536.88,
+  "end": 596.44,
+  "index": 11,
+  "n_tokens": 216
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00012",
+  "text": "and that can change the world. So, I believe that has to happen with all of us together, just pointing out people that TOR and how it works and why it's good for privacy and why you should support any project like this. And let's talk about why is privacy important and let's talk about some cases when bad things happen because in the tools that all of us are using or some of us, there were vulnerabilities. So, let's talk about some appliances. How about robot vacuum cleaners? I heard that they might be unsafe as well. Do you have any bizarre stories about it? Yes, actually a couple of years ago, it came up, I think on, there was a news report that some employees of a company, they were sharing photos of a woman who was in toilet. If that is not bizarre enough, I don't know what it is. I never knew before that that there are cameras pointing upwards in the vacuum cleaners. And the cameras were on the robot vacuum cleaner that was there. Exactly.",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 585.32,
+  "end": 656.9,
+  "index": 12,
+  "n_tokens": 218
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00013",
+  "text": "I never knew before that that there are cameras pointing upwards in the vacuum cleaners. And the cameras were on the robot vacuum cleaner that was there. Exactly. So, in this case, it was like one company, but later it was figured out like, okay, more and more companies started doing the same. They are not using only normal sensors. They have cameras, not only pointing downwards, also upwards. They want to identify everything in the room. They don't secure the services properly enough. The systems are not good enough to make sure others don't have access or even within company. That's how these photos from a robot vacuum cleaner which was in the floor, got leaked to companies or maybe the cheapest contract workers and they were happily sharing photos. And if it was not enough, I think last year, 2024 around October, in US, there are particular another brand's vacuum cleaners got hacked. At first, I think they were chasing the dogs and the cats in the house. And then they started using a lot of vulgar words,",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 647.86,
+  "end": 709.7,
+  "index": 13,
+  "n_tokens": 218
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00014",
+  "text": "got hacked. At first, I think they were chasing the dogs and the cats in the house. And then they started using a lot of vulgar words, shouting at the owners, house owners, and they were firing like, shouting back at the robot vacuum cleaner so you can imagine like constant fight between like human versus hackers on vacuum cleaners. So it sounds very, it's a very useful technology as a vacuum cleaner. But at the same time, we are not supposed to worry about vacuum cleaner, you know, taking pictures when it's not supposed to. So I think that's a nightmare we are living in right now. And how about mobile phones? Of course, our favorite spying devices which we all carry even right now, maybe. Is there anyone listening to us now? Except of the listeners. Who knows? Like that's another sad part that we cannot even guarantee that this doesn't work out. Previously we thought only people with bad intentions they can get into a phone and listen. But I think last year only",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 702.78,
+  "end": 760.34,
+  "index": 14,
+  "n_tokens": 213
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00015",
+  "text": "that we cannot even guarantee that this doesn't work out. Previously we thought only people with bad intentions they can get into a phone and listen. But I think last year only there was at least one whistle blowing happened to another news organization. By the way, you should check them out. 404 Media, amazing journalism. If you go read their stories, you'll find that one company's media information was leaked. Sorry, marketing media was leaked to the journalist where you can clearly see how we can build applications for your TV, mobile phone, and other appliances which can help the company to listen to their customers all the time. So is anyone listening to our conversation other than the YouTube or wherever the original video is? We do not know. So that's, and we all are carrying mobile phones and other devices with us. If not, we are standing in front of a TV or camera or other places. And how do personal assistants on phones work? Because if I have an iPhone and I say, hey Siri or hey Alexa, it replies back.",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 749.98,
+  "end": 814.78,
+  "index": 15,
+  "n_tokens": 217
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00016",
+  "text": "or other places. And how do personal assistants on phones work? Because if I have an iPhone and I say, hey Siri or hey Alexa, it replies back. Does it listen to me all the time or how does it work exactly? So Alexa is very special case in this. I try, if I see any Alexa or ask around if any of those devices are nearby, I try to speak less because it's now well-known again thanks to court cases in the US where the judge asked the Amazon to give recordings of a house for 48 hours, I think if I remember correctly, because there was a murder. Or there are other cases where we now clearly know that those Amazon devices will upload all the audio recordings to their servers so that they can process better. And in most general cases that always means the cheapest contractor in some other part of the world where there are no such laws or the word privacy does not exist, we'll go through and listen to all of our conversation and note down the comments which are important for them.",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 804.42,
+  "end": 866.82,
+  "index": 16,
+  "n_tokens": 214
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00017",
+  "text": "where there are no such laws or the word privacy does not exist, we'll go through and listen to all of our conversation and note down the comments which are important for them. So yes, they help in many cases, but it's extremely scary. One another example was like, I think, Gemini Nano, that was the thing Google released for the phone and red phones which can actually go through the, listen to the call, can help to detect whether it's a spam call or not, but that's now. And as we are discussing, a lot of things depends on what is legal, what is moral in those questions. And if the company wants or buy legal in quotation from a big country, which country we are talking about, that they will be asked to provide those information, they just may have to change it, turn on knob, like change some configuration and maybe the phones instead of processing them locally, they will happy to upload to internet. And none of us, almost none of us are in a position",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 857.42,
+  "end": 922.7,
+  "index": 17,
+  "n_tokens": 214
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00018",
+  "text": "turn on knob, like change some configuration and maybe the phones instead of processing them locally, they will happy to upload to internet. And none of us, almost none of us are in a position where we can identify what all things are happening. I don't know if you have a smart TV at home, but if you have, and then if you can see your network router, the calls going out or the IP addresses are getting accessed, you will certainly see that every time you are turning on your TV or turning off your TV, all of that are getting, data getting sent back to the company. I wonder why the heck my TV company wants to know when I'm turning on the TV or what I'm watching on or not. So all these devices, every time it's a surveillance industry and it's booming across the world. And you were talking about cases where people are using some devices and they're not aware that someone is using their data. But how, what are your thoughts about social media? Because social media is different in a way",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 911.86,
+  "end": 971.1,
+  "index": 18,
+  "n_tokens": 220
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00019",
+  "text": "where people are using some devices and they're not aware that someone is using their data. But how, what are your thoughts about social media? Because social media is different in a way that people voluntarily put their photos there, photos of their kids, lots of information, travel information. What happens with our data once we upload a photo on Instagram or Facebook? How can someone misuse large amount of data? Yeah, and so that answer is actually pretty big also in one way because there are so many things happening at the same time. Number one is the company we are uploading data to, provider of social media. They are scraping that data, they have the data, they don't have to scrap in that way. And they are processing it, they are selling that information to other business to business providers. You will find thousands of such companies who are selling among data each other. They have every details about a house, about person, what you want to eat, what you like, what you don't like,",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 959.5,
+  "end": 1020.5,
+  "index": 19,
+  "n_tokens": 211
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00020",
+  "text": "who are selling among data each other. They have every details about a house, about person, what you want to eat, what you like, what you don't like, what are going on in your life right now. It's funny enough that even last night on Twitter, I saw a post where, or particularly a video where previous FTC chair, Leena Khan, I think she was making about pointing out the fact that with this surveillance industry, with the surveillance pricing, how companies are trying to jack up the prices based upon your scenario, each person individual. Example, if you received an email or a message that someone, one of your family member died, then suddenly if you go and search your, you know, ticket price in the flight, you will get complete different pricing than the person who just totally bored when may want to go somewhere or not. So, and we already know that that happened before also, like one place where you can actually use Power Browser and search about medical terms, because it's private enough for you to search",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1012.9,
+  "end": 1073.14,
+  "index": 20,
+  "n_tokens": 215
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00021",
+  "text": "So, and we already know that that happened before also, like one place where you can actually use Power Browser and search about medical terms, because it's private enough for you to search and read about, learn about things. But there are companies who are trying to see if they can get that information and then you increase the medical insurance pricing. And particularly for women, it's another level of insanity going on. There are already stories how like, I think an actor was killed because someone I managed to identify from the photos where he lives. And that also brings us to another part of the industry, which is known as stalkerware, which is a particular application or the way when someone known tries to, you know, get access to your maybe mobile phone and then try to stalk a known person where they are and location and all the details. And we keep seeing more and more such use cases happening across the world. Our friend Eva from EFF, she actually gave particular amazing talks which are available on internet on this topic. And there is also a coalition of organizations",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1063.38,
+  "end": 1132.38,
+  "index": 21,
+  "n_tokens": 217
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00022",
+  "text": "happening across the world. Our friend Eva from EFF, she actually gave particular amazing talks which are available on internet on this topic. And there is also a coalition of organizations in the stalkerware, stopstalkerware.org. If I remember correctly, that's the name of the organization. So people should check it out. Those cases are terrible. And most of those that you mentioned are individual cases when something happens to an individual. But I wonder what happens if governments and political parties have data of millions or billions of people that can influence elections, for example. That's a good one. So if people love another company called Netflix and watch movies and documentaries there, you will find already a documentary there called The Great Hack, which talks about Facebook and their usage of technology and a company called Cambridge Analytica, how the companies can actually fetch data from the social media without people's notice on knowledge and use that information to change how the outcome of an election, as simple as that. And it was not the only place like in the US,",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1120.5,
+  "end": 1198.22,
+  "index": 22,
+  "n_tokens": 215
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00023",
+  "text": "on knowledge and use that information to change how the outcome of an election, as simple as that. And it was not the only place like in the US, it was used there in this documentary and more the other whistleblowing happened. You can see that many other countries tried to use the same data and so that they can very slowly and under the radar can change people's idea. It's all about controlling that information. They basically used the data to segment people into different groups, right? And they picked the group of people who were undecided who to vote for because they didn't want to influence people who already knew who to vote for, but they decided to pick this group who were undecided because for them it was the easiest to target this group and then they saw this data to political parties and they targeted this group with information. Yeah, that's one of the ways. And then if you keep repeating one lie enough number of times then that lie becomes true. True, yeah. You just have to make sure",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1188.22,
+  "end": 1249.18,
+  "index": 23,
+  "n_tokens": 213
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00024",
+  "text": "Yeah, that's one of the ways. And then if you keep repeating one lie enough number of times then that lie becomes true. True, yeah. You just have to make sure that you have to repeat it enough number of times it should be everywhere. And that's more than enough for this to happen. And it's happening across the world and that's why I mentioned that whole surveillance industry and the amount of data we have about each other which we publish sometimes they scrap. There is another company at Clearview AI who scrap billions of photos from internet without anyone's permission and then selling that information to the law enforcement agencies across the world or who knows to whom I think whoever has money to do these things. So many countries are now trying to figure out many people and when people are slowly figuring out this is happening they're trying to, you know, the only option we have is the legal and we hope that the governments will help. In few places it's still working like people are trying to fight back. Are governments fast enough?",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1240.06,
+  "end": 1304.86,
+  "index": 24,
+  "n_tokens": 217
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00025",
+  "text": "the only option we have is the legal and we hope that the governments will help. In few places it's still working like people are trying to fight back. Are governments fast enough? Because I feel there are lots of different technologies being developed and the IT world is very fast. Are governments as fast as technology is? Obvious answer is no because even we are not fast enough for the technology. Like we go to one night go to bed thinking that I know the command line option of this command tomorrow morning next new release completely change. So of course government is not ready to handle this much of changes and how technology actually works. And that's why we need more people who understand technology to come over and explain these things, to explain people how different small technology or big technology works. Because today we can say that legally doing X and Y one after another is wrong. But by the time that law will go in effect they might have changed to AX, Z and Y mixing completely different order together which is perfectly legal to do. So if I upload my photos somewhere for example",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1292.54,
+  "end": 1362.1,
+  "index": 25,
+  "n_tokens": 218
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00026",
+  "text": "they might have changed to AX, Z and Y mixing completely different order together which is perfectly legal to do. So if I upload my photos somewhere for example and if I remove it is there any way how to have your data removed from all other places that scraped it basically or once you upload something to the internet it's gone it's scraped by very different companies providers and you will never be able to get your data back. Yeah so there are a couple of companies and organizations my brain is totally empty right now that who helps you to delete data from many such places. But at the same time the question is that we have to trust the company that they're actually deleting. Maybe they are deleting but maybe it also went to that cheapest contractor in the other part of the world but where you don't have any legal possibility for you to go and ask them to delete or maybe don't own care. Maybe it's already scrapped by the companies. We can see there are big court cases going on",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1349.98,
+  "end": 1415.14,
+  "index": 26,
+  "n_tokens": 214
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00027",
+  "text": "to go and ask them to delete or maybe don't own care. Maybe it's already scrapped by the companies. We can see there are big court cases going on between companies like all the big companies we can name maybe many of the sponsors like they're doing court cases against each other about who is scrapping whose website. Like I forgot the person but Kori Doctorov mentioned it many of the times in his talks about like how the world of internet became like five big websites like taking skin sorts of each other. I think that's the way he was explaining. And scraping data from other websites it's a very popular topic nowadays with chat GPT and all of those LLMs that were taught on the whole internet. What are your thoughts about AI and LLMs? The most favorite topic of the world right now instantly scared again for the whole term. If you go and read the amount of stories going on around the world like how they're being used or being pushed to use at everything it's scary. People do not understand how technology works",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1405.94,
+  "end": 1476.23,
+  "index": 27,
+  "n_tokens": 218
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00028",
+  "text": "If you go and read the amount of stories going on around the world like how they're being used or being pushed to use at everything it's scary. People do not understand how technology works and they want to use technology for everything. So there are already examples of very basic thing which they're supposed to be good at translations where in Facebook persons good morning message got translated into something else and people landed in jail. There already happened many years ago even in the modern cases where doctors used AI to transcribe where there is AI decided to hallucinate and add a lot of random things in those or people like I think I judges getting extremely fed up that AI is create helping the lawyers to create the reports where it's continuously mentioning cases which never happened. So we will see how bad it can go but things doesn't seem that well right now in my mind that people are believing that computers what it's on internet or it's told by a computer it cannot be wrong. And another problem is that people often",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1462.67,
+  "end": 1531.67,
+  "index": 28,
+  "n_tokens": 210
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00029",
+  "text": "that people are believing that computers what it's on internet or it's told by a computer it cannot be wrong. And another problem is that people often enter sensitive data into tech, GPT and all of those tools and you can see that for example there was a screenshot on the socials that if you type in API key equals that there is auto completion and it offers you some random API key. What happens if I enter some sensitive data into chat GPT or cloud or any other LLM is it forever gone? So see I don't use these tools that much so I just tried how they work seeing the very basic but in general if you read the fine prints of all these things you will find that they own the questions they own all the information you're uploading to them and they will use that to train their own models. So it's just like uploading your picture to an open website and just saying like okay it's for the whole internet to have. So it will require a lot more training it will require a lot more explanation",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1522.83,
+  "end": 1587.79,
+  "index": 29,
+  "n_tokens": 217
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00030",
+  "text": "to an open website and just saying like okay it's for the whole internet to have. So it will require a lot more training it will require a lot more explanation it will require a lot more I think legal side to make sure that these things are built for security or privacy. I hope someday we'll have a little bit better world with that. But right now everyone loves to upload everything to whichever possible favorite AI tooling. It can be any one of them and yeah people are uploading their private information people are uploading their whole life. Some of them think oh they can understand me so well like no that's not how computers work. That's the funny thing that I saw that the most common use case for chat GPT is therapy that people use chat GPT as a therapist which means in fact that they enter their sensitive daytime information about their lives and what's going on there. I can't even imagine like if you see our actual real therapist the amount of years they have to study the amount of experience they have need to become a therapist",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1578.55,
+  "end": 1644.95,
+  "index": 30,
+  "n_tokens": 219
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00031",
+  "text": "I can't even imagine like if you see our actual real therapist the amount of years they have to study the amount of experience they have need to become a therapist and deal with people's privacy data. And then we see like oh there is this app just let me just upload everything of my life to this. But this is a really good business model actually because you don't have to steal data you don't have to spy on people. People just enter the information on their own so basically those companies get it for free they don't even have to spy they just get the data. Yes and that's the benefits of social media to these companies or the governments correct. If they want to know what's happening they can just scrap the like we are in Europe right now so if people want they can like we know that that can happen that many people happily post pictures like look as a whole family we are in Europe Python in whichever city it is but if someone from their country like people who want let's say",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1634.99,
+  "end": 1693.11,
+  "index": 31,
+  "n_tokens": 211
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00032",
+  "text": "that many people happily post pictures like look as a whole family we are in Europe Python in whichever city it is but if someone from their country like people who want let's say I want to steal something from that person's house and we see that that family is totally into another country happily traveling there we know the conference is going on for so long days. It's always a question correct like how much data you want to make public and how people may might want to use it. Many times like I live in Sweden now many times I heard the stories from friends that when they like many of the friends when they went to any of the bigger shops outside of Stockholm there are people who tried to break into their houses. So and apparently. So the key information there is to know that those people will be gone for a week because they are at a week long conference it's enough just to put one photo and social media and people know okay this house will be empty for seven days. Exactly and in this case couple of hours like I think there are services",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1683.55,
+  "end": 1743.15,
+  "index": 32,
+  "n_tokens": 214
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00033",
+  "text": "it's enough just to put one photo and social media and people know okay this house will be empty for seven days. Exactly and in this case couple of hours like I think there are services where I can put in the car registration number and find that owner. So most probably the owner's house is empty right now because the car is here two hours away from the city. So very basic thing and people with other minds they can also figure out how technology works and use it to destroy people's life. What are some very basic things that I should keep in mind as a regular developer? So let's say I'm a Python developer I create APIs or websites or something like that and I'm not focused on privacy per se but I want to make sure that the tools I use are private enough. What are some very basic things that are low hanging fruits that you see on like regular websites that are some things that people should pay attention to? My favorite thing always to say is logging because that's what we all love. We love to log.",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1732.95,
+  "end": 1798.67,
+  "index": 33,
+  "n_tokens": 218
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00034",
+  "text": "that you see on like regular websites that are some things that people should pay attention to? My favorite thing always to say is logging because that's what we all love. We love to log. We love to want to see all those analytics, what's going on in your app, all the data as we can but I think that's one of the very basic starting thing we can do. If you want to debug, we want to see debug log that's in a very restricted environment, it's good but if you log extra data thinking that this will help us in future that may not always well go well for the privacy point of view. One good example I can say to the people in the private, particularly the Python world is to see pipi.org and there's already a blog post published that how pipi decided to remove the IP addresses of the users instead having one way hasses so that if time comes and people try to let's for example, even legally try to get",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1784.75,
+  "end": 1846.79,
+  "index": 34,
+  "n_tokens": 211
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00035",
+  "text": "that how pipi decided to remove the IP addresses of the users instead having one way hasses so that if time comes and people try to let's for example, even legally try to get ask information for the users, we only have the hasses but there is no private information leaking of those IP addresses of the users and in the blog post they explain how it's been used and like it's already deploying and like where all in the system previously people, we had IP addresses but then how they figured out that's at all not required the basic information we need, we can get it from Fastly who is our kind CDN provider so that's one pretty good example just in the Python world and there are more other examples. So if I want to implement logging I should think about what is information that I need and information that I don't necessarily need but I feel like it often comes from companies as well that they want to analyze the usage of their app so they can for example, improve the UI or UX or similar",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1831.95,
+  "end": 1896.87,
+  "index": 35,
+  "n_tokens": 214
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00036",
+  "text": "but I feel like it often comes from companies as well that they want to analyze the usage of their app so they can for example, improve the UI or UX or similar so what can we do if we have management for example telling us that we should log more things and where is the balance between we do need some information in order to know how to improve the product but also we want to make sure that the product doesn't invade privacy of users so what are some things that for example you recommend not logging and what are some things that are saved to be logged? Like start with bare minimum like don't start logging things which are if not required that would be my basic thing and then slowly increase if you want for like giving you example view particular elements and management asking and that whole service industry I was talking about there are already available scripts JavaScripts which can actually monitor our mouse pointer in the web page where exactly we are spending more time in the page where are what are you reading which section where is the pointer how are we moving among a web page",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1885.87,
+  "end": 1955.59,
+  "index": 36,
+  "n_tokens": 214
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00037",
+  "text": "our mouse pointer in the web page where exactly we are spending more time in the page where are what are you reading which section where is the pointer how are we moving among a web page so it's up to that level in details so if I have to talk about like examples directly so I guess that personally identifiable information start doing there reduce as much as possible do we need it can we just get it done in our testing environment and some people and some organizations are always like no we need more data we need to know exactly where the users are maybe pointing to them that there are currently a lot of court cases going on and it's not always go for the companies people are fighting back and winning in cases that's a good start and also explaining to the management that if something happens security incidents can happen to anyone if there is any break in happens and data gets stolen how much how bad that can go bad for the shareholders I think that's a good starting point because end of the day every company works for the shareholders and how about encryption is it an important topic",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 1945.27,
+  "end": 2014.51,
+  "index": 37,
+  "n_tokens": 215
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00038",
+  "text": "how much how bad that can go bad for the shareholders I think that's a good starting point because end of the day every company works for the shareholders and how about encryption is it an important topic that I should also pay attention to I'm right now inside EU and even then it's a very big topic for all of us because most people in power they want encryption to only work for them but it's really bad when people in the world you want to use it so if you're like there are multiple attempts to happen it's not new it's happening again and again the encryption war in different forms, different names one of the modern ones in EU is chat control where they don't want to have people the same level of encryption which should provide or like which they want to have themselves but they don't have like people making or trying to make these rules and regulations don't understand that there is no golden key rule in this if you create a backdoor people will find it people will use it every time and there are cases already I think in US",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 2003.11,
+  "end": 2067.67,
+  "index": 38,
+  "n_tokens": 220
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00039",
+  "text": "don't understand that there is no golden key rule in this if you create a backdoor people will find it people will use it every time and there are cases already I think in US where there are proper officially made backdoors to for the mobile telephone networks and things and then finally found that there are hackers from China were already listening and watching what's going on using the same backdoors so if people think encryption will only work when we want it to work that's not gonna happen like there are many countries who are not trying to break encryption for let's say signal but if you talk to the people who understand cryptography people who are like I'm not one of them I trust my cryptographer friends but if you talk to them you'll understand like why it is not possible in the way the lawyers think or the politicians think that cryptography will work for them if you break it it will be broken for everyone and we will not have privacy in our world so right now even for Europe it's a big challenge because it is again and again",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 2056.27,
+  "end": 2120.95,
+  "index": 39,
+  "n_tokens": 218
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00040",
+  "text": "if you break it it will be broken for everyone and we will not have privacy in our world so right now even for Europe it's a big challenge because it is again and again things like chat control are coming back with a different name where the goal is to undermine encryption but they're not getting the fact that if we take down encryption it's gonna affect everything we do right now in our life and whatever the last remaining bits of privacy we have we will lose it directly because today maybe we have democracy but we do not know how politics and the world will change fast and there are always evil actors how can we fight for privacy what are some specific steps that we can do like we are in Europe, I think correct it's the place where we have such a huge crowd people from all parts of technology and outside of technology world mixing together I guess one of the best thing is to start here like explain people because even though people are really experienced engineers developers not everyone think that privacy matters or not everyone thinks that it is in danger they think oh it will only happen to bad people",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 2111.55,
+  "end": 2183.43,
+  "index": 40,
+  "n_tokens": 219
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00041",
+  "text": "to start here like explain people because even though people are really experienced engineers developers not everyone think that privacy matters or not everyone thinks that it is in danger they think oh it will only happen to bad people or it doesn't apply to us only things happen to people which is personal to us then only we react and that's the human nature so I guess it's a very basic thing that we can talk about issues more talk about how things can go wrong talk about like if you have an eco device and from Amazon in the house how much it can listen to our conversation at house will you be okay will you be okay if any again random contractor from the rest of the world listening to our whole day conversation or know what your kids is doing so privacy the idea of privacy and encryption how it works I guess there is a lot of misconception even though people are really good when it comes to technology they know the technology very well they just don't see the outcome they think oh it only happens to a far away country where there is no democracy",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 2168.39,
+  "end": 2236.15,
+  "index": 41,
+  "n_tokens": 212
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00042",
+  "text": "when it comes to technology they know the technology very well they just don't see the outcome they think oh it only happens to a far away country where there is no democracy no it can happen to any one of us so and so those that you mentioned are some very simple and straightforward things we can do for example spreading awareness about it but I wonder to have any experience with activism or politics politics no are there any organizations for example that people can join anyways how to become more active so politics is always a big thing correct but it's like it's not for me but for many people who are good at it they can actually help in the local politics and decide how the laws getting created et cetera but if nothing else the easier way is to find the organizations which are helping for privacy which are fighting for it EFF I already mentioned Torr project another nonprofit like find the local nonprofits there are many in each of the countries who are fighting for the privacy in that country find the lawyers who are fighting for people doing those court cases for privacy and each country has different groups and so",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 2224.79,
+  "end": 2300.23,
+  "index": 42,
+  "n_tokens": 220
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00043",
+  "text": "there are many in each of the countries who are fighting for the privacy in that country find the lawyers who are fighting for people doing those court cases for privacy and each country has different groups and so finding your local group would be really helpful where you can you will be much more effective in that way but there are always larger bigger groups and most of them are nonprofits and they need help both in money and voluntary time at the same time right and are there any local groups that they are part of? I am directly not in like Sweden or Stockholm but I'm in a channel called Pound DFRI that's a local nonprofit in Sweden I just try to read their Swedish and if I can decipher a little bit of it but that organization tries to do a lot of sessions and tries to write to the like proper way to inform the government about different laws which are trying to game up and they try to explain to people and lawmakers and everyone like how things can go good or bad so I know that organization in Sweden that they work very heavily into this they try to",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 2286.83,
+  "end": 2354.91,
+  "index": 43,
+  "n_tokens": 217
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00044",
+  "text": "and they try to explain to people and lawmakers and everyone like how things can go good or bad so I know that organization in Sweden that they work very heavily into this they try to showcase why the new laws or any new technology can go bad or not so that one I know in Sweden and are there any international nonprofits or groups that are an umbrella organization that has multiple organizations under it or do you think that the all organizations are very decentralized and defragmented and very local? It's both like if you look at something like let's say a human rights watch a or for example Amnesty right they have the country specific things correct so they are working even though they're a global organization the country specific parts are working on their own or if you go to like EFF you'll find they have smaller like chapters and they have a list of other organizations who may work in the same field right and if someone would like to learn more about privacy do you have any resources or tips where to start? My general go-to solution is asking people to read",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 2344.43,
+  "end": 2421.47,
+  "index": 44,
+  "n_tokens": 218
+ },
+ {
+  "id": "privacy-and-surveillance-kushal-das:00045",
+  "text": "who may work in the same field right and if someone would like to learn more about privacy do you have any resources or tips where to start? My general go-to solution is asking people to read ssd.eff.org that's the the guide with pointing out to various parts of our privacy how privacy works how different technology works including phone mobile phone like Android iPhone to how password managers work to how Tor works and if you want to attend a protest what are the things you are supposed to do before going to a protest so that explains like pretty well so just check it out okay thank you very much for coming thank you for this",
+  "episode": "Privacy and Surveillance - Kushal Das",
+  "start": 2408.91,
+  "end": 2456.31,
+  "index": 45,
+  "n_tokens": 129
+ }
+]

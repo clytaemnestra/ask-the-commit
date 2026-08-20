@@ -1,0 +1,82 @@
+[
+  {
+    "question": "What are the main neural network architectures used for music generation?",
+    "expected_answer_contains": ["diffusion"],
+    "expected_episode": "AI-Generated Music - Mateusz Modrzejewski",
+    "expect_refusal": false
+  },
+  {
+    "question": "How do diffusion models actually produce audio?",
+    "expected_answer_contains": ["noise"],
+    "expected_episode": "AI-Generated Music - Mateusz Modrzejewski",
+    "expect_refusal": false
+  },
+  {
+    "question": "Which Python libraries are recommended for working with audio and music?",
+    "expected_answer_contains": ["librosa"],
+    "expected_episode": "AI-Generated Music - Mateusz Modrzejewski",
+    "expect_refusal": false
+  },
+  {
+    "question": "What is the concern about copyright for working musicians?",
+    "expected_answer_contains": ["copyright"],
+    "expected_episode": "AI-Generated Music - Mateusz Modrzejewski",
+    "expect_refusal": false
+  },
+  {
+    "question": "What was PyPI formerly known as, and where did the name come from?",
+    "expected_answer_contains": ["Cheese Shop"],
+    "expected_episode": "Inside PyPI Support - Maria Ashna",
+    "expect_refusal": false
+  },
+  {
+    "question": "How long does it take to triage a PyPI account recovery request?",
+    "expected_answer_contains": ["two days"],
+    "expected_episode": "Inside PyPI Support - Maria Ashna",
+    "expect_refusal": false
+  },
+  {
+    "question": "Is PyPI Orgs a commercial product?",
+    "expected_answer_contains": ["open source"],
+    "expected_episode": "Inside PyPI Support - Maria Ashna",
+    "expect_refusal": false
+  },
+  {
+    "question": "Why does Kushal Das believe privacy is a human right?",
+    "expected_answer_contains": ["privacy"],
+    "expected_episode": "Privacy and Surveillance - Kushal Das",
+    "expect_refusal": false
+  },
+  {
+    "question": "What operating system do journalists use for handling sensitive documents?",
+    "expected_answer_contains": ["Qubes"],
+    "expected_episode": "Privacy and Surveillance - Kushal Das",
+    "expect_refusal": false
+  },
+  {
+    "question": "What is chat control and why is it a concern in Europe?",
+    "expected_answer_contains": ["chat control"],
+    "expected_episode": "Privacy and Surveillance - Kushal Das",
+    "expect_refusal": false
+  },
+  {
+    "question": "What is the capital of Mongolia?",
+    "expected_answer_contains": [],
+    "expect_refusal": true
+  },
+  {
+    "question": "What did they say about the 2031 Martian tax code?",
+    "expected_answer_contains": [],
+    "expect_refusal": true
+  },
+  {
+    "question": "What does Kushal Das think about the Rust programming language?",
+    "expected_answer_contains": [],
+    "expect_refusal": true
+  },
+  {
+    "question": "How much revenue did the podcast make last quarter?",
+    "expected_answer_contains": [],
+    "expect_refusal": true
+  }
+]

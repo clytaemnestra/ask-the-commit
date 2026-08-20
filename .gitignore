@@ -1,0 +1,43 @@
+# Secrets — never commit. .env.example is the tracked template.
+.env
+.env.local
+
+# Generated state: transcripts, the Chroma database, eval output.
+# Note: ignore the *contents* (data/*), not the directory — git cannot re-include
+# a file inside an excluded directory, so `data/` plus a negation silently fails.
+data/*
+!data/index/
+data/index/*
+# The NumPy index IS the deployed artifact and must be committed (~264KB).
+# Because of the rules above it needs a force-add the first time:
+#   git add -f data/index
+!data/index/embeddings.npy
+!data/index/chunks.json
+!data/index/manifest.json
+
+# Podcast audio — hundreds of MB, and the speakers' material rather than the
+# project's. Transcript excerpts ship in data/index/chunks.json instead.
+episodes/*
+!episodes/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.claude/
+.DS_Store
+.idea/
+.vscode/
+
+# Scratch: screenshots and notes dropped in the working tree.
+# The UI is pure HTML/CSS, so no image belongs in the repo today.
+*.png
+*.jpg
+*.jpeg
