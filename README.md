@@ -127,6 +127,7 @@ ingest.py · rag.py · main.py · eval.py     entry points
 | `data/index/` | The committed index: `embeddings.npy`, `chunks.json`, `manifest.json`. |
 | `app/config.py` | Typed settings from env / `.env`. |
 | `app/logging_config.py` | Structured JSON logging with request correlation. |
+| `app/cache.py` | Thread-safe LRU answer cache. |
 | `ingest.py` | Audio → transcript → chunks → embeddings → Chroma. |
 | `rag.py` | The core loop. Also a CLI for testing without the API. |
 | `main.py` | FastAPI app: `GET /` (UI), `POST /ask`, `GET /health`. |
@@ -268,6 +269,7 @@ Everything is env-driven; see `.env.example` for the full annotated list.
 | `CHUNK_TOKENS` | `500` (this deployment runs `220`) | See [chunking](#chunking-approach-and-why) — 220 keeps chunks inside the encoder window |
 | `CHUNK_OVERLAP_TOKENS` | `50` | |
 | `TOP_K` | `5` | Chunks retrieved per question |
+| `ANSWER_CACHE_SIZE` | `256` | Cached answers; `0` disables |
 | `MIN_SCORE` | `0.20` | Cosine floor below which the service refuses without calling the model |
 | `LOG_FORMAT` | `json` | `text` for readable local development |
 
@@ -666,6 +668,36 @@ takes **~700ms** and retrieval ~40ms once the embedder is warm — see the 680ms
    class) to allow longer chunks without truncation.
 5. Hybrid BM25 + dense retrieval, which should help exact-match queries on the
    proper nouns these episodes are full of.
+
+---
+
+## Answer caching
+
+Demo traffic repeats: everyone clicks the same example questions. Without a
+cache each repeat costs ~1.5s of generation and a slice of a rate-limited quota,
+for an answer already computed.
+
+`app/cache.py` is a bounded, thread-safe LRU keyed on the normalised question
+(case, whitespace and trailing punctuation folded, `top_k` included since it
+changes the retrieved context). Measured end to end:
+
+```
+1st ask   1937 ms   cached=false
+2nd ask      0 ms   cached=true     same answer, same sources
+```
+
+Three decisions worth naming:
+
+- **In-memory only.** The host has no persistent disk and idles the process out
+  anyway, so a disk cache would be either lost or stale. A cold start paying one
+  generation call is the better trade against a persistence layer.
+- **Thread-safe.** FastAPI serves `/ask` from a threadpool, so concurrent access
+  is routine rather than theoretical; a bare `OrderedDict` would corrupt under it.
+- **Cached responses report *this* request's timings**, not the original's, and
+  carry `cached: true`. Reporting the original 1937ms would be a lie, and
+  reporting 0ms without the flag would look like a bug.
+
+`GET /health` exposes `cached_answers` and `cache_hit_rate`.
 
 ---
 

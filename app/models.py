@@ -167,6 +167,9 @@ class RagAnswer:
             refused, so callers never cite a source for a non-answer.
         retrieved: Everything retrieval returned, refusal or not. This is the
             diagnostic trace the eval harness grades retrieval on.
+        cached: True when this response was served from the answer cache. The
+            timing fields then describe *this* request (near zero), not the
+            original computation.
     """
 
     question: str
@@ -174,6 +177,7 @@ class RagAnswer:
     sources: list[RetrievedChunk] = field(default_factory=list)
     retrieved: list[RetrievedChunk] = field(default_factory=list)
     refused: bool = False
+    cached: bool = False
     retrieval_ms: float = 0.0
     generation_ms: float = 0.0
     total_ms: float = 0.0

@@ -98,7 +98,8 @@ repo, then set:
 
 ```bash
 curl -s https://ask-the-commit.onrender.com/health | jq
-# {"status":"ok","indexed_chunks":96,"indexed_episodes":3,"boot_seconds":0.2,...}
+# {"status":"ok","indexed_chunks":96,"indexed_episodes":3,"boot_seconds":0.2,
+#  "cached_answers":0,"cache_hit_rate":0.0,...}
 ```
 
 | Symptom | Cause |
@@ -159,9 +160,10 @@ In increasing order of effort:
 
 1. **Reduce `TOP_K` to 3.** Cuts prompt tokens by ~40%, roughly doubling
    questions per minute. Retrieval recall is 100% at k=5, so there is headroom.
-2. **Cache answers by question.** Demo traffic repeats heavily — everyone clicks
-   the same example chips. An `lru_cache` on the normalised question removes most
-   of it.
+2. **Answer caching — already enabled** (`ANSWER_CACHE_SIZE=256`). Repeat
+   questions cost no generation call at all: measured 1937ms → 0ms. Since demo
+   traffic is mostly the same handful of example questions, this removes most of
+   the quota pressure on its own.
 3. **Per-IP rate limiting.** `slowapi` is a two-line FastAPI integration.
 4. **A shared password**, handed out with the link.
 5. **Search-only mode.** `LLM_PROVIDER=echo` never calls a chat model, so there is

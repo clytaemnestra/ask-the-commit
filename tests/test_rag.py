@@ -140,3 +140,59 @@ def test_index_compatibility_passes_when_embedders_match(
 def test_stores_without_provenance_skip_the_check(transcript, embedder, store, chat_model) -> None:
     """The in-memory fake has no manifest; verification must be a no-op."""
     RagPipeline(embedder, store, chat_model).verify_index_compatibility()
+
+
+def test_repeat_question_is_served_from_cache(transcript, embedder, store, chat_model) -> None:
+    from app.cache import AnswerCache
+
+    index(transcript, embedder, store)
+    pipeline = RagPipeline(
+        embedder, store, chat_model, top_k=2, min_score=-1.0, cache=AnswerCache(max_entries=8)
+    )
+
+    first = pipeline.answer("what about burnout?")
+    second = pipeline.answer("  What about BURNOUT? ")   # same question, different form
+
+    assert first.cached is False
+    assert second.cached is True
+    assert second.answer == first.answer
+    assert second.sources == first.sources
+    assert len(chat_model.calls) == 1          # the model was called exactly once
+
+
+def test_cached_timings_describe_this_request(transcript, embedder, store, chat_model) -> None:
+    from app.cache import AnswerCache
+
+    index(transcript, embedder, store)
+    pipeline = RagPipeline(
+        embedder, store, chat_model, top_k=2, min_score=-1.0, cache=AnswerCache(max_entries=8)
+    )
+    pipeline.answer("burnout")
+
+    cached = pipeline.answer("burnout")
+
+    assert cached.generation_ms == 0.0   # nothing was generated on this request
+    assert cached.retrieval_ms == 0.0
+
+
+def test_different_top_k_is_not_a_cache_hit(transcript, embedder, store, chat_model) -> None:
+    from app.cache import AnswerCache
+
+    index(transcript, embedder, store)
+    pipeline = RagPipeline(embedder, store, chat_model, min_score=-1.0, cache=AnswerCache(max_entries=8))
+
+    pipeline.answer("burnout", top_k=1)
+    second = pipeline.answer("burnout", top_k=3)
+
+    assert second.cached is False
+    assert len(chat_model.calls) == 2
+
+
+def test_caching_is_off_by_default(transcript, embedder, store, chat_model) -> None:
+    index(transcript, embedder, store)
+    pipeline = RagPipeline(embedder, store, chat_model, top_k=2, min_score=-1.0)
+
+    pipeline.answer("burnout")
+    pipeline.answer("burnout")
+
+    assert len(chat_model.calls) == 2   # no cache unless one is supplied

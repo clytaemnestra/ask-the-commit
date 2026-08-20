@@ -12,12 +12,14 @@ import argparse
 import json
 import sys
 import time
+from dataclasses import replace
 from typing import Sequence
 
 from app.config import Settings, get_settings
 from app.factory import build_chat_model, build_embedder, build_vector_store
 from app.interfaces import ChatModel, Embedder, GenerationError, VectorStore
 from app.logging_config import configure_logging, get_logger, new_request_id, request_id_var
+from app.cache import AnswerCache, CacheStats, normalise_question
 from app.models import RagAnswer, RetrievedChunk
 from app.prompts import REFUSAL_TEXT, SYSTEM_PROMPT, build_user_prompt, is_refusal
 
@@ -38,6 +40,8 @@ class RagPipeline:
         min_score: Cosine-similarity floor. When the best hit falls below it the
             pipeline refuses immediately instead of paying for a generation call
             that would (correctly) refuse anyway. Set below -1 to disable.
+        cache: Optional answer cache. A repeat question then costs no generation
+            call and no quota.
     """
 
     def __init__(
@@ -48,12 +52,14 @@ class RagPipeline:
         *,
         top_k: int = 5,
         min_score: float = 0.2,
+        cache: AnswerCache[RagAnswer] | None = None,
     ) -> None:
         self._embedder = embedder
         self._store = store
         self._chat_model = chat_model
         self._top_k = top_k
         self._min_score = min_score
+        self._cache: AnswerCache[RagAnswer] = cache or AnswerCache(max_entries=0)
 
     @property
     def model_name(self) -> str:
@@ -71,6 +77,10 @@ class RagPipeline:
             "embedding_model": self._embedder.name,
             "llm": self._chat_model.name,
         }
+
+    def cache_stats(self) -> CacheStats:
+        """Hit/miss counters for the answer cache."""
+        return self._cache.stats()
 
     def verify_index_compatibility(self) -> None:
         """Check the index was built by the embedder that will encode questions.
@@ -119,6 +129,20 @@ class RagPipeline:
         question = question.strip()
         started = time.perf_counter()
 
+        cache_key = normalise_question(question, top_k)
+        hit = self._cache.get(cache_key)
+        if hit is not None:
+            result = replace(
+                hit,
+                cached=True,
+                # These describe this request, in which nothing ran.
+                retrieval_ms=0.0,
+                generation_ms=0.0,
+                total_ms=_elapsed_ms(started),
+            )
+            self._log_query(result, result.retrieved, short_circuited=True)
+            return result
+
         retrieval_started = time.perf_counter()
         chunks = self.retrieve(question, top_k=top_k)
         retrieval_ms = _elapsed_ms(retrieval_started)
@@ -145,6 +169,7 @@ class RagPipeline:
             total_ms=_elapsed_ms(started),
             model=self._chat_model.name,
         )
+        self._cache.put(cache_key, result)
         self._log_query(result, chunks, short_circuited=False)
         return result
 
@@ -191,6 +216,7 @@ class RagPipeline:
                 "generation_ms": round(result.generation_ms, 1),
                 "total_ms": round(result.total_ms, 1),
                 "refused": result.refused,
+                "cached": result.cached,
                 "short_circuited": short_circuited,
                 "answer_chars": len(result.answer),
             },
@@ -211,6 +237,10 @@ def build_pipeline(settings: Settings | None = None, *, read_only: bool = False)
         chat_model=build_chat_model(settings),
         top_k=settings.top_k,
         min_score=settings.min_score,
+        cache=AnswerCache(
+            max_entries=settings.answer_cache_size,
+            ttl_seconds=settings.answer_cache_ttl_s,
+        ),
     )
 
 

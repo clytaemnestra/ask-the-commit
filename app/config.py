@@ -104,6 +104,14 @@ class Settings(BaseSettings):
     openai_model: str = "gpt-4o-mini"
     openai_base_url: str = "https://api.openai.com/v1"
 
+    # --- Answer cache ------------------------------------------------------
+    # Repeat questions are common on a demo link. In-memory only: the host has
+    # no persistent disk and idles the process out anyway.
+    answer_cache_size: int = Field(256, ge=0, description="Entries to keep. 0 disables caching.")
+    answer_cache_ttl_s: float | None = Field(
+        None, description="Optional entry lifetime. None = keep until evicted."
+    )
+
     # --- Observability -----------------------------------------------------
     log_level: str = "INFO"
     log_format: Literal["json", "text"] = "json"

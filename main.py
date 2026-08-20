@@ -184,6 +184,8 @@ async def health(request: Request) -> HealthResponse:
     every question would be refused until ``ingest.py`` has run.
     """
     stats = request.app.state.stats
+    # Reading two counters behind a lock: no I/O, so /health stays pinger-cheap.
+    cache = get_pipeline(request).cache_stats()
     return HealthResponse(
         status="ok" if int(stats["indexed_chunks"]) > 0 else "degraded",
         version=__version__,
@@ -192,6 +194,8 @@ async def health(request: Request) -> HealthResponse:
         embedding_model=str(stats["embedding_model"]),
         llm=str(stats["llm"]),
         boot_seconds=getattr(request.app.state, "boot_seconds", 0.0),
+        cached_answers=cache.size,
+        cache_hit_rate=round(cache.hit_rate, 4),
     )
 
 

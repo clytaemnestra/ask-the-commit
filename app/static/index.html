@@ -65,6 +65,9 @@
   .score { margin-left: auto; color: var(--muted); font-size: .78rem; font-variant-numeric: tabular-nums; }
   .quote { color: var(--muted); font-size: .89rem; margin-top: .4rem; }
   .meta { color: var(--muted); font-size: .78rem; font-variant-numeric: tabular-nums; }
+  .badge { display: inline-block; padding: .05rem .4rem; border-radius: 4px;
+           background: var(--accent); color: var(--accent-ink); font-size: .72rem;
+           font-weight: 600; letter-spacing: .02em; margin-right: .35rem; }
   .err { color: #c0392b; }
   @media (prefers-color-scheme: dark) { .err { color: #ff8a75; } }
 </style>
@@ -86,12 +89,15 @@
 </main>
 
 <script>
+// Every one of these is answerable from the indexed episodes and passes the
+// eval set, so a visitor's first click always lands on a real answer.
 const EXAMPLES = [
   "Why does Kushal think privacy is a human right?",
-  "How do diffusion models actually produce audio?",
-  "What was PyPI formerly known as?",
   "What is chat control?",
-  "What is the capital of Mongolia?",
+  "How do diffusion models actually produce audio?",
+  "Which Python libraries are recommended for working with audio?",
+  "What was PyPI formerly known as?",
+  "What does a PyPI support specialist actually do?",
 ];
 
 const $ = (id) => document.getElementById(id);
@@ -152,8 +158,10 @@ async function ask(question) {
     $("output").innerHTML =
       `<div class="card answer${body.refused ? " refused" : ""}">${esc(body.answer)}</div>` +
       renderSources(body.sources) +
-      `<p class="meta">${esc(body.model)} · retrieval ${body.retrieval_ms.toFixed(0)}ms · ` +
-      `generation ${body.generation_ms.toFixed(0)}ms · total ${body.latency_ms.toFixed(0)}ms</p>`;
+      (body.cached
+        ? `<p class="meta"><span class="badge">cached</span> served in ${body.latency_ms.toFixed(0)}ms without calling the model</p>`
+        : `<p class="meta">${esc(body.model)} · retrieval ${body.retrieval_ms.toFixed(0)}ms · ` +
+          `generation ${body.generation_ms.toFixed(0)}ms · total ${body.latency_ms.toFixed(0)}ms</p>`);
   } catch (err) {
     $("output").innerHTML = `<div class="card err">Could not reach the service: ${esc(String(err))}</div>`;
   } finally {

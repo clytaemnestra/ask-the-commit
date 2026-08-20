@@ -47,6 +47,7 @@ class AskResponse(BaseModel):
     answer: str
     sources: list[Source]
     refused: bool = Field(..., description="True when the answer is the 'not covered in the episodes' fallback.")
+    cached: bool = Field(False, description="Served from the answer cache; no model was called.")
     model: str
     request_id: str
     latency_ms: float
@@ -61,6 +62,7 @@ class AskResponse(BaseModel):
             answer=result.answer,
             sources=[Source.from_retrieved(source) for source in result.sources],
             refused=result.refused,
+            cached=result.cached,
             model=result.model,
             request_id=request_id,
             latency_ms=round(result.total_ms, 1),
@@ -79,6 +81,8 @@ class HealthResponse(BaseModel):
     embedding_model: str
     llm: str
     boot_seconds: float = Field(0.0, description="How long startup took, for cold-start visibility.")
+    cached_answers: int = Field(0, description="Entries currently in the answer cache.")
+    cache_hit_rate: float = Field(0.0, description="Fraction of questions served from cache since boot.")
 
 
 class ErrorResponse(BaseModel):

@@ -47,5 +47,7 @@ services:
         value: "5"
       - key: MIN_SCORE
         value: "0.20"
+      - key: ANSWER_CACHE_SIZE
+        value: "256"           # repeat questions cost no generation call
       - key: LOG_FORMAT
         value: json
