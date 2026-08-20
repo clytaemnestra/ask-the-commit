@@ -49,5 +49,15 @@ services:
         value: "0.20"
       - key: ANSWER_CACHE_SIZE
         value: "256"           # repeat questions cost no generation call
+
+      # A public link spends your Groq quota. 20 questions per IP per minute is
+      # generous for a human and useless for a scraper.
+      - key: RATE_LIMIT_REQUESTS
+        value: "20"
+      - key: RATE_LIMIT_WINDOW_S
+        value: "60"
+      - key: TRUST_PROXY_HEADERS
+        value: "true"          # Render rewrites X-Forwarded-For; believe it
+
       - key: LOG_FORMAT
         value: json

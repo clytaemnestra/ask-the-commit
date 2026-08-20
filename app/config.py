@@ -10,12 +10,39 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Literal
 
-from pydantic import AliasChoices, Field, model_validator
+from pydantic import AliasChoices, Field, SecretStr, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 LlmProvider = Literal["groq", "ollama", "openai", "echo"]
 EmbeddingProvider = Literal["onnx", "local", "jina", "openai", "google"]
 VectorStoreKind = Literal["numpy", "chroma"]
+
+#: Settings that may legitimately be left blank in a ``.env`` file. A blank line
+#: like ``ANSWER_CACHE_TTL_S=`` reaches pydantic as ``""``, which is not a float
+#: and not None, so without this the documented ``cp .env.example .env`` would
+#: fail validation at boot. Blank means "unset" for all of them.
+_OPTIONAL_FIELDS = (
+    "whisper_language",
+    "whisper_initial_prompt",
+    "embedding_model",
+    "embedding_api_key",
+    "embedding_base_url",
+    "embedding_dimension",
+    "groq_api_key",
+    "openai_api_key",
+    "answer_cache_ttl_s",
+)
+
+
+def secret_value(secret: SecretStr | None) -> str | None:
+    """Unwrap a :class:`~pydantic.SecretStr`, preserving ``None``.
+
+    Credentials are held as ``SecretStr`` so that a stray ``repr(settings)``, a
+    pydantic validation error or a logged settings dump prints ``**********``
+    instead of the key. They are unwrapped only at the point a provider client
+    is constructed.
+    """
+    return secret.get_secret_value() if secret is not None else None
 
 
 class Settings(BaseSettings):
@@ -61,7 +88,7 @@ class Settings(BaseSettings):
     )
     onnx_threads: int = 1
     embedding_model: str | None = Field(None, description="Overrides the provider's default model.")
-    embedding_api_key: str | None = None
+    embedding_api_key: SecretStr | None = None
     embedding_base_url: str | None = Field(None, description="Overrides the provider's default base URL.")
     embedding_dimension: int | None = Field(None, description="Expected vector width; checked per response.")
     embedding_batch_size: int = 32
@@ -93,14 +120,14 @@ class Settings(BaseSettings):
     llm_timeout_s: float = 60.0
     llm_max_retries: int = 3
 
-    groq_api_key: str | None = None
+    groq_api_key: SecretStr | None = None
     groq_model: str = "openai/gpt-oss-120b"
     groq_base_url: str = "https://api.groq.com/openai/v1"
 
     ollama_model: str = "llama3.1:8b"
     ollama_base_url: str = "http://localhost:11434/v1"
 
-    openai_api_key: str | None = None
+    openai_api_key: SecretStr | None = None
     openai_model: str = "gpt-4o-mini"
     openai_base_url: str = "https://api.openai.com/v1"
 
@@ -110,6 +137,24 @@ class Settings(BaseSettings):
     answer_cache_size: int = Field(256, ge=0, description="Entries to keep. 0 disables caching.")
     answer_cache_ttl_s: float | None = Field(
         None, description="Optional entry lifetime. None = keep until evicted."
+    )
+
+    # --- Rate limiting -----------------------------------------------------
+    # /ask is the only expensive endpoint and the only one that spends quota.
+    # In-memory and per-process, which is exactly right for a single free-tier
+    # instance and not enough for a horizontally scaled one.
+    rate_limit_requests: int = Field(
+        20, ge=0, description="Requests allowed per client per window. 0 disables the limit."
+    )
+    rate_limit_window_s: float = Field(60.0, gt=0, description="Length of the sliding window, in seconds.")
+    rate_limit_max_clients: int = Field(
+        4096, ge=1, description="Distinct clients tracked before the least recent is forgotten."
+    )
+    trust_proxy_headers: bool = Field(
+        True,
+        description="Read the client IP from X-Forwarded-For. Correct behind a proxy that sets it "
+        "(Render, Fly, any load balancer); turn it off when the service is directly exposed, "
+        "because a client can otherwise spoof the header and bypass the rate limit.",
     )
 
     # --- Observability -----------------------------------------------------
@@ -136,6 +181,14 @@ class Settings(BaseSettings):
     def transcripts_dir(self) -> Path:
         """Cache of transcribed episodes, so re-chunking never re-transcribes."""
         return self.data_dir / "transcripts"
+
+    @field_validator(*_OPTIONAL_FIELDS, mode="before")
+    @classmethod
+    def _blank_means_unset(cls, value: object) -> object:
+        """Treat a blank env var as absent rather than as an empty value."""
+        if isinstance(value, str) and not value.strip():
+            return None
+        return value
 
     @model_validator(mode="after")
     def _validate_chunking(self) -> Settings:

@@ -6,7 +6,7 @@ Run locally::
 
 Endpoints:
     GET  /        — minimal single-page query UI
-    POST /ask     — ask a question, get a grounded answer plus sources
+    POST /ask     — ask a question, get a grounded answer plus sources (rate limited)
     GET  /health  — liveness plus index statistics
     GET  /docs    — generated OpenAPI docs
 """
@@ -18,7 +18,7 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import AsyncIterator, Callable
 
-from fastapi import FastAPI, Request, Response
+from fastapi import Depends, FastAPI, Request, Response
 from fastapi.responses import HTMLResponse, JSONResponse
 from starlette.concurrency import run_in_threadpool
 
@@ -27,6 +27,7 @@ from app.config import get_settings
 from app.factory import ConfigurationError, validate_serving_config
 from app.interfaces import GenerationError
 from app.logging_config import configure_logging, get_logger, new_request_id, request_id_var
+from app.ratelimit import FORWARDED_FOR, RateLimiter, RateLimitExceeded, client_key
 from app.schemas import AskRequest, AskResponse, ErrorResponse, HealthResponse
 from rag import RagPipeline, build_pipeline
 
@@ -57,6 +58,12 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     pipeline.warm_up()  # pay the ~900ms model load here, not on the first question
     app.state.pipeline = pipeline
     app.state.stats = pipeline.index_stats()
+    app.state.settings = settings
+    app.state.rate_limiter = RateLimiter(
+        max_requests=settings.rate_limit_requests,
+        window_seconds=settings.rate_limit_window_s,
+        max_clients=settings.rate_limit_max_clients,
+    )
     app.state.boot_seconds = round(time.perf_counter() - started, 2)
 
     log.info(
@@ -78,7 +85,7 @@ app = FastAPI(
     summary="Question answering grounded in local podcast transcripts.",
     description=(
         "Answers are generated only from transcript chunks retrieved from the local "
-        "Chroma index. When the index has nothing relevant, the service says so "
+        "index. When the index has nothing relevant, the service says so "
         "rather than guessing."
     ),
     lifespan=lifespan,
@@ -88,6 +95,39 @@ app = FastAPI(
 def get_pipeline(request: Request) -> RagPipeline:
     """Fetch the process-wide pipeline built during startup."""
     return request.app.state.pipeline
+
+
+def enforce_rate_limit(request: Request) -> None:
+    """Charge this request against its client's allowance.
+
+    Applied to ``/ask`` only. ``/`` and ``/health`` are static reads and a
+    free-tier host needs ``/health`` pingable without limit to stay warm.
+
+    Raises:
+        RateLimitExceeded: If the client is over its allowance for the window.
+    """
+    limiter: RateLimiter = request.app.state.rate_limiter
+    if not limiter.enabled:
+        return
+
+    settings = request.app.state.settings
+    client = client_key(
+        forwarded_for=request.headers.get(FORWARDED_FOR),
+        peer=request.client.host if request.client else None,
+        trust_proxy_headers=settings.trust_proxy_headers,
+    )
+    decision = limiter.check(client)
+    if not decision.allowed:
+        log.warning(
+            "ratelimit.rejected",
+            extra={
+                "event": "ratelimit.rejected",
+                "client": client,
+                "limit": limiter.limit,
+                "retry_after_s": round(decision.retry_after, 1),
+            },
+        )
+        raise RateLimitExceeded(retry_after=decision.retry_after, limit=limiter.limit)
 
 
 @app.middleware("http")
@@ -126,6 +166,23 @@ async def _generation_error_handler(request: Request, exc: GenerationError) -> J
     )
 
 
+@app.exception_handler(RateLimitExceeded)
+async def _rate_limit_handler(request: Request, exc: RateLimitExceeded) -> JSONResponse:
+    """Too many questions from one client: ask them to come back shortly."""
+    retry_after = max(1, int(exc.retry_after + 0.999))  # a whole second, never zero
+    return JSONResponse(
+        status_code=429,
+        headers={"retry-after": str(retry_after)},
+        content=ErrorResponse(
+            detail=(
+                f"rate limit exceeded — this demo allows {exc.limit} questions per client "
+                f"per window. Try again in {retry_after}s."
+            ),
+            request_id=request_id_var.get(),
+        ).model_dump(),
+    )
+
+
 @app.exception_handler(ConfigurationError)
 async def _configuration_error_handler(request: Request, exc: ConfigurationError) -> JSONResponse:
     """Missing credentials or an unknown provider: the service is misconfigured."""
@@ -139,8 +196,13 @@ async def _configuration_error_handler(request: Request, exc: ConfigurationError
 @app.post(
     "/ask",
     response_model=AskResponse,
-    responses={502: {"model": ErrorResponse}, 503: {"model": ErrorResponse}},
+    responses={
+        429: {"model": ErrorResponse},
+        502: {"model": ErrorResponse},
+        503: {"model": ErrorResponse},
+    },
     summary="Ask a question about the podcast archive",
+    dependencies=[Depends(enforce_rate_limit)],
 )
 async def ask(payload: AskRequest, request: Request) -> AskResponse:
     """Answer a question from the indexed transcripts.

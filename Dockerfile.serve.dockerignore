@@ -1,5 +1,5 @@
 # Build context for Dockerfile.serve. BuildKit prefers <dockerfile>.dockerignore
-# over .dockerignore, which lets the serving image include data/chroma while the
+# over .dockerignore, which lets the serving image include data/index while the
 # ingest image (.dockerignore) keeps excluding all of data/.
 
 .git

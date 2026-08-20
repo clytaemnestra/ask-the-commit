@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from typing import Callable
 
-from app.config import Settings
+from app.config import Settings, secret_value
 from app.interfaces import ChatModel, Embedder, Transcriber, VectorStore
 from app.logging_config import get_logger
 from app.providers.embeddings_remote import PROVIDER_PRESETS, RemoteEmbedder
@@ -77,7 +77,7 @@ def build_embedder(settings: Settings) -> Embedder:
         provider=settings.embedding_provider,
         model=settings.embedding_model or preset["model"],
         base_url=settings.embedding_base_url or preset["base_url"],
-        api_key=settings.embedding_api_key,
+        api_key=secret_value(settings.embedding_api_key) or "",
         dimension=settings.embedding_dimension,
         batch_size=settings.embedding_batch_size,
         timeout_s=settings.embedding_timeout_s,
@@ -170,7 +170,9 @@ def _build_groq(settings: Settings) -> ChatModel:
             "GROQ_API_KEY is not set. Copy .env.example to .env and add a key from "
             "https://console.groq.com/keys, or set LLM_PROVIDER=ollama / echo."
         )
-    return _openai_compatible(settings, "groq", settings.groq_model, settings.groq_base_url, settings.groq_api_key)
+    return _openai_compatible(
+        settings, "groq", settings.groq_model, settings.groq_base_url, secret_value(settings.groq_api_key)
+    )
 
 
 def _build_ollama(settings: Settings) -> ChatModel:
@@ -183,7 +185,7 @@ def _build_openai(settings: Settings) -> ChatModel:
     if not settings.openai_api_key:
         raise ConfigurationError("OPENAI_API_KEY is not set but LLM_PROVIDER=openai")
     return _openai_compatible(
-        settings, "openai", settings.openai_model, settings.openai_base_url, settings.openai_api_key
+        settings, "openai", settings.openai_model, settings.openai_base_url, secret_value(settings.openai_api_key)
     )
 
 
@@ -193,7 +195,7 @@ def _build_echo(settings: Settings) -> ChatModel:
 
 
 def _openai_compatible(
-    settings: Settings, provider: str, model: str, base_url: str, api_key: str
+    settings: Settings, provider: str, model: str, base_url: str, api_key: str | None
 ) -> ChatModel:
     """Shared constructor for the OpenAI-dialect providers."""
     return OpenAICompatibleChatModel(

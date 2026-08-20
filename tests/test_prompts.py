@@ -44,9 +44,30 @@ def test_refusals_are_recognised_despite_formatting(answer: str) -> None:
 
 @pytest.mark.parametrize(
     "answer",
+    ["This is not covered in the episodes.", "This isn't covered in the episodes"],
+)
+def test_refusal_wording_variants_are_recognised(answer: str) -> None:
+    assert is_refusal(answer)
+
+
+@pytest.mark.parametrize(
+    "answer",
     ["They discussed burnout [1].", "The episodes cover this in detail.", ""],
 )
 def test_real_answers_are_not_treated_as_refusals(answer: str) -> None:
+    assert not is_refusal(answer)
+
+
+@pytest.mark.parametrize(
+    "answer",
+    [
+        # Rule 6 of the system prompt asks for exactly these. A substring test
+        # called them refusals and the pipeline then threw away their citations.
+        "This isn't covered in the episodes, but they do discuss Qubes OS at length [1].",
+        "They mention PyPI funding [1]. The rest of this isn't covered in the episodes.",
+    ],
+)
+def test_partial_answers_are_not_refusals(answer: str) -> None:
     assert not is_refusal(answer)
 
 

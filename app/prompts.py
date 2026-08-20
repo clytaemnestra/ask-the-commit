@@ -71,12 +71,26 @@ def build_user_prompt(question: str, chunks: Sequence[RetrievedChunk]) -> str:
     )
 
 
-def is_refusal(answer: str) -> bool:
-    """Whether an answer is the "not covered" refusal.
+def _normalise(text: str) -> str:
+    """Fold an answer to a comparable form: lowercase, letters and spaces only."""
+    folded = text.lower().replace("’", "'").replace("is not", "isn't")
+    return " ".join(re.sub(r"[^a-z ]", "", folded).split())
 
-    Compares loosely (case, punctuation, apostrophe style, surrounding text) so a
-    model that adds a trailing period or a curly quote is still recognised.
+
+def is_refusal(answer: str) -> bool:
+    """Whether an answer *is* the "not covered" refusal, and nothing else.
+
+    Formatting is ignored — case, surrounding whitespace, a trailing period, a
+    curly apostrophe, "is not" for "isn't" — but the comparison is anchored to
+    the whole answer rather than a substring search.
+
+    That distinction matters. Rule 6 of :data:`SYSTEM_PROMPT` asks the model to
+    answer the part of a question the excerpts cover and say plainly which part
+    they do not, which produces answers like::
+
+        This isn't covered in the episodes, but they do discuss Qubes OS [1].
+
+    A substring test calls that a refusal, and the caller then discards a real
+    answer's citations. A partial answer is an answer.
     """
-    normalised = re.sub(r"[^a-z ]", "", answer.lower().replace("’", "'"))
-    target = re.sub(r"[^a-z ]", "", REFUSAL_TEXT.lower())
-    return target.strip() in " ".join(normalised.split())
+    return _normalise(answer) == _normalise(REFUSAL_TEXT)

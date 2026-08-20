@@ -1,9 +1,9 @@
 # Query-only image, for hosts that run containers (Cloud Run, Fly, a VPS).
 # Render does not need this — see DEPLOY.md for the simpler Python runtime path.
 #
-# Ships no ML stack at all: the index is a committed NumPy array and the question
-# is embedded through an HTTP API, so there is nothing to install beyond the
-# runtime requirements.
+# Ships no ML framework: the index is a committed NumPy array and the question is
+# embedded by ONNX Runtime against the committed MiniLM export, so there is no
+# torch, no chromadb and no faster-whisper in the image.
 #
 #   docker build -f Dockerfile.serve -t ask-the-commit-serve .
 #   docker run -p 7860:7860 --env-file .env ask-the-commit-serve
