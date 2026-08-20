@@ -1,7 +1,8 @@
-# Podcast RAG
+# Ask the Commit
 
-Ask questions about a podcast archive and get answers **grounded only in the actual
-transcripts**, with a citation to the episode and the timestamp the answer came from.
+Retrieval-augmented question answering over the *Ask the Commit* podcast archive.
+
+Ask a question, get an answer **grounded only in the actual transcripts**, with a citation to the episode and the timestamp the answer came from.
 If the archive doesn't cover it, the service says so instead of inventing an answer.
 
 Everything runs locally except generation, which uses a free hosted open-weight model.

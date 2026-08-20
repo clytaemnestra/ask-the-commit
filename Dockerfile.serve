@@ -5,8 +5,8 @@
 # is embedded through an HTTP API, so there is nothing to install beyond the
 # runtime requirements.
 #
-#   docker build -f Dockerfile.serve -t podcast-rag-serve .
-#   docker run -p 7860:7860 --env-file .env podcast-rag-serve
+#   docker build -f Dockerfile.serve -t ask-the-commit-serve .
+#   docker run -p 7860:7860 --env-file .env ask-the-commit-serve
 FROM python:3.11-slim
 
 ENV PYTHONUNBUFFERED=1 \
@@ -22,8 +22,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app ./app
 COPY rag.py main.py ./
-# The prebuilt index. Build fails loudly here if you forgot to commit it.
+# The two committed artifacts the service cannot start without. Build fails
+# loudly here rather than at runtime if either is missing from the context.
 COPY data/index ./data/index
+COPY models/minilm-onnx ./models/minilm-onnx
 
 RUN chown -R app:app /app
 USER app

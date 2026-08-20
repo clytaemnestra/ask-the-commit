@@ -11,7 +11,7 @@
 
 services:
   - type: web
-    name: podcast-rag
+    name: ask-the-commit
     runtime: python
     plan: free
     region: frankfurt          # pick the region nearest your interviewers

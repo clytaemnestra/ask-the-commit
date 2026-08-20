@@ -64,7 +64,7 @@ same embedder that built the index — so a fresh clone deploys as-is.
 
 ```bash
 git add -f data/index models/minilm-onnx
-git commit -m "Podcast RAG"
+git commit -m "Ask the Commit"
 git push
 ```
 
@@ -88,7 +88,7 @@ Render dashboard → **New** → **Blueprint** → select your repo. It reads
 Prefer clicking through instead of a blueprint? **New → Web Service**, connect the
 repo, then set:
 
-- Runtime: **Python 3**
+- Language / Runtime: **Python 3** (not Docker — see the troubleshooting table)
 - Build command: `pip install -r requirements.txt`
 - Start command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
 - Plan: **Free**
@@ -97,7 +97,7 @@ repo, then set:
 ## 4. Verify
 
 ```bash
-curl -s https://podcast-rag.onrender.com/health | jq
+curl -s https://ask-the-commit.onrender.com/health | jq
 # {"status":"ok","indexed_chunks":96,"indexed_episodes":3,"boot_seconds":0.2,...}
 ```
 
@@ -178,6 +178,15 @@ local embeddings it makes the service entirely free to run.
 `Dockerfile.serve` still builds a container of the same service for anywhere that
 runs Docker — Cloud Run, Fly, a VPS. Render does not need it; the Python runtime
 path above is simpler and faster to deploy.
+
+Note the Dockerfiles are deliberately **not** named `Dockerfile`: Render (and
+several other PaaS hosts) auto-detect a root `Dockerfile` and silently prefer it
+over a declared runtime. `Dockerfile.ingest` builds the transcription image;
+`Dockerfile.serve` builds the query-only one. Build them explicitly:
+
+```bash
+docker build -f Dockerfile.serve -t ask-the-commit-serve .
+```
 
 For a demo with no hosting at all, a Cloudflare tunnel to your laptop works and
 dies when you close it:

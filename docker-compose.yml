@@ -8,9 +8,11 @@
 
 services:
   api:
-    build: .
-    image: podcast-rag:latest
-    container_name: podcast-rag-api
+    build:
+      context: .
+      dockerfile: Dockerfile.ingest
+    image: ask-the-commit:latest
+    container_name: ask-the-commit-api
     ports:
       - "8000:8000"
     env_file:
@@ -28,8 +30,10 @@ services:
       retries: 3
 
   ingest:
-    build: .
-    image: podcast-rag:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.ingest
+    image: ask-the-commit:latest
     profiles: ["ingest"]              # only runs when explicitly invoked
     env_file:
       - .env

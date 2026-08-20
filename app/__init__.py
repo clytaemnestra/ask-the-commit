@@ -1,4 +1,4 @@
-"""Podcast RAG: interfaces, adapters and shared plumbing.
+"""Ask the Commit: interfaces, adapters and shared plumbing.
 
 Layering (dependencies point downwards only):
 

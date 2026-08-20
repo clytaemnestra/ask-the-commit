@@ -29,8 +29,9 @@ eval.py
 eval_set.json
 requirements-ingest.txt
 requirements-dev.txt
-Dockerfile
+Dockerfile.ingest
 docker-compose.yml
 *.md
 
-# data/index is deliberately NOT ignored: it is the index the service serves.
+# data/index and models/ are deliberately NOT ignored: they are the index the
+# service searches and the model it embeds questions with.

@@ -73,7 +73,7 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
 
 
 app = FastAPI(
-    title="Podcast RAG",
+    title="Ask the Commit",
     version=__version__,
     summary="Question answering grounded in local podcast transcripts.",
     description=(
@@ -168,7 +168,7 @@ async def index() -> HTMLResponse:
     deployment image without the static folder still starts.
     """
     if not _UI_PATH.exists():
-        return HTMLResponse('<h1>Podcast RAG</h1><p>API docs at <a href="/docs">/docs</a>.</p>')
+        return HTMLResponse('<h1>Ask the Commit</h1><p>API docs at <a href="/docs">/docs</a>.</p>')
     return HTMLResponse(_UI_PATH.read_text(encoding="utf-8"))
 
 
